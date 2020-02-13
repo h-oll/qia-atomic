@@ -69,9 +69,7 @@
 |--------------------------------------------------------------------+--------------+--------------------------------------------------------------+----------|
 |                                                                    |              |                                                              |          |
 
-
 * Transport Layer
-
 ** Definition
 ** Protocols
 *** Send single qubit
@@ -102,6 +100,16 @@ Several working modes for the transport layer can be imagined:
 - keep track of the use of the buffer
 - design messenging scheme to ask before transmission and ack after
 
+*** Share graph state / cluster state (stabilizer state) 
+**** Specs
+***** Specify the state to be shared
+***** Flow control 
+- Specify who is asking the broadcast
+- Specify the state
+- All return the timeout parameter they will wait between getting the state and receive the ack for processing it from the network
+***** Error correction
+- ask for a given fidelity
+***** Verification
 
 * Session Layer
 ** Definition
@@ -131,70 +139,44 @@ Several working modes for the transport layer can be imagined:
 *** Secure channel
 *** Uncloneable channel
 *** Authenticated channel
-
+*** QKD
+*** Common shared randomness
+*** DH ?
+*** Secure classical channel
 * Presentation layer
 ** BB84 Prepare
 ** BB84 Measure
-
-* To be sorted
-** Buffer memory
-Might be asking to regenerate state if qubit has been in buffer for too long
-
-** Local gates
-** Quantum authenticated channel
-
-** Multiparty ghz state generation and distribution
-
-** Multiparty graph state generation and distribution
-
-** Graph state generation
-
-** Single qubit measurement
-
-** Single qubit gate
-
-** Single qubit clifford gate
-
-** Shared entanglement
-
+** Other encodings (VBQC encoding)
+** Q. OTP
+** Local QECC 
+** Privacy amplification encoding / decoding (something else than BB84?) 
+* Application layer
 ** GHZ anonymous transmission
-
-** Quantum authentication (encoding / decoding)
-
 ** Quantum secret sharing
-
 ** Verifiable secret sharing
-
-** Graph state verification
-
-** BB84 encoding / decoding channel
-
-** Secure classical channel
-
-** Single qubit preparation (non clifford state)
-
-** Multi-qubit local POVM
-
-** Swap test 
-
-** Memory
-
-** Privacy amplification
-
-** Information reconciliation
-
 ** Weak coin flipping
-
-** QKD
-
-** Common shared randomness
-
-** CZ gates
-
-** QOTP
-
 ** Weak string erasure
-
+* Other
+** Memory manager
+*** Manages where qubits are
+*** Queriable
+- Constantly knows how many qubits are stored
+- when they entered into it
+- what the diamond norm of the expected operator actig on the qubit with the identity is.
+*** Issues errors
+when the expected qubit fidelity is below a given threshold (given at qubit storage?) in fact when the diamond norm with the identity as a reference is below 1-\epsilon
+** Single Qubit Local gates Pauli
+** Single Qubit Local gates Clifford
+** Single Qubit Local gates non-Clifford / non transversable => will depend on the fact that data is encoded or not
+** Single Qubit Local measurement
+** Multi-qubit local POVM
+** CZ / CNOT gates
+** Information reconciliation
+** Swap test 
+** Graph state verification
+** remote state preparation 
+** blind remote state preparation
+** 1w hash function
 * Example of classical protocols
 
 ** ssh 

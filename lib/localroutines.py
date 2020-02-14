@@ -2,6 +2,9 @@ import cmath
 import uuid
 import random
 
+from hypothesis import given
+from hypothesis.strategies import 
+
 class Backend:
     def __init__(self, X, Y, Z, H, T, CNOT):
         self.X = X
@@ -31,15 +34,7 @@ class qubit:
     def __str__(self):
         return f"""Qubit: {self.uuid}; State: {self.state[0]}|0> + {self.state[1]}|1>"""
         
-b = Backend(
-    lambda q: q.X(),
-    lambda q: q.Y(),
-    lambda q: q.Z(),
-    lambda q: q.H(),
-    lambda q: q.T(),
-    lambda q: q.CNOT())
-
-class QOTP:
+class QRoutines:
     def __init__(self, backend):
         self.X = backend.X
         self.Y = backend.Y
@@ -47,8 +42,9 @@ class QOTP:
         self.H = backend.H
         self.T = backend.T
         self.CNOT = backend.CNOT
-    
-    def run(self, block):
+
+
+    def qotp(self, block):
         key = []
         for q in block:
             r = random.randint(0,3)
@@ -59,22 +55,30 @@ class QOTP:
             key.append(r)
         return key
 
+# Define backend
+b = Backend(
+    lambda q: q.X(),
+    lambda q: q.Y(),
+    lambda q: q.Z(),
+    lambda q: q.H(),
+    lambda q: q.T(),
+    lambda q: q.CNOT())
+
+# Instantiating QRoutines library
+qr = QRoutines(b)
+
+# Run example with 2 qubit qotp encoding, returns key used
 q1 = qubit()
-q2 = qubit()
-q2.X()
-
-
-#qotp = QOTP()
-#key = qotp.run(q1)
+q2 = qubit(); q2.X()
 block = [q1,q2]
 
-for q in block:
-    print(q)
+print('Clear block')
+for q in block: print(q)
 
-qotp = QOTP(b)
+print('Applying QOTP') 
+key = qr.qotp(block)
 
-key = qotp.run(block)
+print('Encrypted block') 
+for q in block: print(q)
+print('Used key', key)
 
-for q in block:
-    print(q)
-print(key)

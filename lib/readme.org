@@ -1,0 +1,10 @@
+* Coding principles
+- Use unit testing 
+  - for a shor introduction https://python-3-patterns-idioms-test.readthedocs.io/en/latest/UnitTesting.html => define the tests before coding the function
+  - for some testing framework https://docs.python-guide.org/writing/tests/ => go for hypothesis ? [HO: need to define a strategy for qubits]
+- Doc string must be present
+- Each functionality should check that the backend provides the proper operations for it to run => ideally only one check when instantiating the library => no dynamic change of the library possible [HO: is that even possible using python?]
+- Think async on everything. There should not be any blocking function out of the library 
+- The inputs should cope with generators so we can apply it indefinite length iterables (increases non-blockingness).
+
+

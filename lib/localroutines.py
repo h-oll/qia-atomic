@@ -5,10 +5,14 @@ import time
 import inspect
 from math import sqrt
 
+
 from components.host import Host
-from components.network import Network
+#from components.network import Network
 #from objects.qubit import Qubit
-from components.logger import Logger
+#from components.logger import Logger
+
+from projectq import MainEngine
+from projectq.ops import X, Y, Z, H, CNOT, Measure
 
 class Backend:
     def __init__(self, X, Y, Z, H, T, CNOT, SEND, TELE, MEAS, DISP, EPR):
@@ -23,6 +27,8 @@ class Backend:
         self.MEAS = MEAS
         self.DISP = DISP
         self.EPR = EPR
+
+
 
 class TensorQubit:
     def __init__(self, localhost):
@@ -44,40 +50,7 @@ class TensorQubit:
         self.host = targethost
     def __str__(self):
         return f"""Qubit: {self.uuid}; Host: {self.host}; State: {self.state[0]}|0> + {self.state[1]}|1>"""
-
-class PauliQubit:
-    def __init__(self, localhost):
-        self.state = "I"
-        self.uuid = uuid.uuid4()
-        self.host = localhost
-    def X(self):
-        if self.state == "I": new_state = "X" 
-        if self.state == "X": new_state = "I" 
-        if self.state == "Y": new_state = "Z" 
-        if self.state == "Z": new_state = "Y" 
-        self.state = new_state
-    def Y(self):
-        if self.state == "I": new_state = "Y"
-        if self.state == "X": new_state = "Z"
-        if self.state == "Y": new_state = "I"
-        if self.state == "Z": new_state = "X"
-        self.state = new_state
-    def Z(self):
-        if self.state == "I": new_state = "Z"
-        if self.state == "X": new_state = "Y"
-        if self.state == "Y": new_state = "X"
-        if self.state == "Z": new_state = "I"
-        self.state = new_state
-    def H(self):
-        if self.state == "I": new_state = "I"
-        if self.state == "X": new_state = "Z"
-        if self.state == "Y": new_state = "Y"
-        if self.state == "Z": new_state = "X"
-    def send(self, targethost):
-        self.host = targethost
-    def __str__(self):
-        return f"""Qubit: {self.uuid}; Host: {self.host}; State: {self.state}"""
-    
+        
 class Host:
     def __init__(self, id):
         self.id = id
@@ -85,7 +58,6 @@ class Host:
         return self.id
         
 class QRoutines:
-    
     def __init__(self, backend):
         self.X = backend.X
         self.Y = backend.Y
@@ -170,7 +142,7 @@ def ex_qotp(host):
 
     print('Clear block')
     qr.display(clear_block)
-    
+
     print('## Applying QOTP')
     enc_block, key = zip(*qr.qotp_enc(clear_block))
 
@@ -183,7 +155,7 @@ def ex_qotp(host):
     dec_block = list(qr.qotp_dec(enc_block, key))
     print('Decrypted block') 
     qr.display(dec_block)
-        
+       
 def ex_stream(sourcehost, targethost):
     block = [Qubit(sourcehost) for i in range(10)]
     qr.stream(block, targethost)
@@ -239,7 +211,31 @@ def main():
 if __name__ == '__main__':
     # Defining Backend
 
-    Qubit = PauliQubit
+    engine = MainEngine()
+    
+    class ProjectQQubit:
+        def __init__(self, localhost):
+            self.state = engine.allocate_qubit()
+            self.uuid = uuid.uuid4()
+            self.host = localhost
+        def X(self):
+            X | self.state
+        def Y(self):
+            Y | self.state
+        def Z(self):
+            Z | self.state
+        def H(self):
+            H | self.state
+        def send(self, targethost):
+            self.host = targethost
+        def __str__(self):
+            return f"""Host: {self.host}; state: {engine.backend.cheat()}"""
+
+    q = ProjectQQubit('Alice')
+
+    print(q)
+    
+    Qubit = ProjectQQubit
     
     sq = Backend(
         lambda q: q.X(), #x
@@ -266,9 +262,32 @@ if __name__ == '__main__':
         None,
         lambda q: print(q),
         None)
+
+    projectq = Backend(
+        lambda q: X | q.state, #x
+        lambda q: Y | q.state, #Y
+        lambda q: Z | q.state, #Z
+        lambda q: H | q.state, #H
+        None,  #T
+        lambda q1, q2: CNOT | (q1, q2),  #CNOT
+        lambda q, targethost: q.send(targethost),  #SEND
+        None,
+        None,
+        lambda q: print(q),
+        None)
     
     # Instantiating QRoutines library
     #qr = QRoutines(sq)
-    qr = QRoutines(simple)
+    #qr = QRoutines(simple)
+    qr = QRoutines(projectq)
     
-    main()
+    #main()
+
+    q1 = engine.allocate_qubit()
+    q2 = engine.allocate_qubit()
+
+    X | q2 
+    Measure | q1
+    Measure | q2
+    print(int(q1))
+    print(int(q2))

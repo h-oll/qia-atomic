@@ -1,0 +1,23 @@
+* Purpose
+- Identify repeated atomic tasks in protocols
+- Code the most useful of them
+- Discuss the opportunity of including these tasks into the hardware that is being built
+
+* Methodology
+- Review the protocol zoo
+- Identify the atomic tasks for each protocol
+- Affect the atomic task into categories
+  - Ntework stage
+  - Complexity of the task
+  - Layer
+  - Speed
+- Map the various tasks in a KG and find which are useful
+
+
+* Results
+** Protocol list + identified atomic tasks
+** Task categorization
+** KG
+** Software implementation recommendations
+** Hardware integration recommendations
+

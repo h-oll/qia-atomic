@@ -1,0 +1,265 @@
+% Created 2020-02-24 Mon 00:15
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{braket}
+\usepackage{mathrsfs}
+\usepackage{marginnote}
+\newcommand{\mn}[2]{\marginnote{\tiny \textbf{#1:} #2}}
+\author{H. Ollivier}
+\date{2020-02-24}
+\title{Quantum Internet Alliance M4.2: List of atomic tasks}
+\hypersetup{
+ pdfauthor={H. Ollivier},
+ pdftitle={Quantum Internet Alliance M4.2: List of atomic tasks},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.3.1)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+
+\section{Purpose}
+\label{sec:org2c57c5f}
+Application level protocols need to have access to networking services such as entanglement sharing between any two points of the network. While such service is at the heart of the quantum internet architecture, additionnal functionalities can be requiered or just convenient to have for better, faster, wider development of application level protocols. 
+
+The purpose of this report is to review a wide range of such protocols searching for atomic repeatable functions while categorising them along several dimensions (such as their corresponding network stage). By doing so, we aim at providing building blocks that would: 
+\begin{itemize}
+\item lessen the amount of code and control needed while developing applications;
+\item allow benchmarking of the nodes and network capabilities against these tasks;
+\item provide functionalities with sound cryptographic definitions;
+\item provide a simulation platform where these functions would already be implemented, to further accelerate the creation cycle of a quantum protocols, as well as providing reusability of code.
+\end{itemize}
+
+\section{Methodology}
+\label{sec:org6dd60d7}
+\begin{enumerate}
+\item Review of the entire quantum protocol zoo looking at each protocol;
+\item Identification and grouping of  candidate atomic functions;
+\item Categorising various candidates into network stages, type (quantum internet layer attribution, off-layer), and necessity
+\item Integration into protocol zoo's knowledge graph
+\end{enumerate}
+
+\section{Review of the quantum protocol zoo}
+\label{sec:org3081bde}
+
+\begin{center}
+\begin{tabular}{ll}
+Protocol & Atomic Function Candidates\\
+\hline
+GHZ-based Quantum Anonymous Transmission & Classical authenticated channels\\
+\url{https://arxiv.org/abs/quant-ph/0409201} & GHZ creation and broadcast\\
+ & Classical collision detection protocol\\
+ & Single qubit measurement\\
+ & Single qubit Hadamard gate\\
+ & Limited memory\\
+ & Teleportation\\
+\hline
+Verifiable Quantum Anonymous Transmission & Notification (private computation of classical parity, OR, Rand)\\
+\url{https://arxiv.org/pdf/1811.04729.pdf} & Single qubit measurements in the equatorial plane\\
+ & Imperfect GHZ source\\
+ & Limited memory\\
+ & (Uses GHZ anonymous transmission as subroutine)\\
+\hline
+Polynomial Code based Quantum Authentication & Clifford circuits (error correction)\\
+\url{https://arxiv.org/pdf/quant-ph/0205128.pdf} & Memory\\
+\hline
+Fast Quantum Byzantine Agreement & Distribution of GHZ state among n parties\\
+\url{https://dl.acm.org/doi/10.1145/1060590.1060662} & Verification of n-party maximally entangled state\\
+ & (Uses oblivious common coin)\\
+ & (Uses verifiable QSS)\\
+\hline
+Quantum Bit Commitment & BB84 encoding of classical information\\
+\url{https://arxiv.org/abs/1108.2879} & Single qubit measurement in computational and +/- bases\\
+ & Secure classical channel\\
+ & Fast operations to keep the relativistic constraints\\
+\hline
+Quantum Coin Flipping & \(\pi/9\) single qubit preparation\\
+\url{https://arxiv.org/abs/quant-ph/9904078} & Multi qubit POVM\\
+\hline
+Gottesman and Chuang Quantum Digital Signature & Memory\\
+\url{https://arxiv.org/abs/quant-ph/0105032} & Swap test\\
+ & Stabilizer states creation\\
+\hline
+Prepare and Measure Quantum Digital Signature (QDS) & Quantum authenticated channel (unfortunately stronger than QDS)\\
+ & BB84 encoding\\
+ & BB84 decoding\\
+\hline
+Measurement Device Independent QDS & Classical authenticated channels\\
+ & Measurement Device Independent QKD link\\
+ & BB8484 Encoding and Decoding\\
+\hline
+Multipartite Entanglement Verification & Authenticated classical channels\\
+ & Secure classical broadcast\\
+ & Common shared randomness\\
+ & Limited memory\\
+ & BB84 Measurements\\
+ & GHZ source / broadcast\\
+\hline
+Quantum Fingerprinting & Clifford gates\\
+ & Swap test\\
+\hline
+BB84 & BB84 Encoding and Decoding\\
+ & Authenticated classical channel\\
+ & Privacy amplification\\
+ & Information reconciliation\\
+\hline
+Device Independent QKD & EPR distribution\\
+ & Information reconciliation\\
+ & \\
+\hline
+Quantum Leader Election & (Uses Weak coin flipping)\\
+ & \\
+\hline
+Quantum Cheque & 1. Uses: QKD\\
+ & 2. GHZ source\\
+ & 3. Quantum memory\\
+ & 4. Quantum 1-way function\\
+ & 5. SWAP test\\
+\hline
+Quantum Coin & Clifford gates\\
+ & Quantum memory\\
+\hline
+Quantum Token & BB84 Encoding and decoding\\
+ & Quantum Memory\\
+\hline
+Wiesner Quantum Money & BB84 Encoding and decoding\\
+ & Quantum Memory\\
+\hline
+Quantum Oblivious transfer & BB84 Encoding and decoding\\
+\hline
+Classical FHE for q circuits & TDO\\
+\hline
+Measurement-Only Universal Blind Quantum Computation & Graph state generation (C-Z, + states preparation, + quantum memory)\\
+ & Equatorial plane measurements\\
+\hline
+Prepare-and-Send Quantum Fully Homomorphic Encryption & TDO\\
+\hline
+Prepare-and-Send Universal Blind Quantum Computation & Graph state generation (C-Z, + states preparation, + quantum memory)\\
+ & Equatorial plane measurements\\
+\hline
+Certified Pseudo-Secret Random Qubit Generator (PSQRG) & BB84 Encoding Decoding\\
+ & Quantum Memory\\
+\hline
+Prepare-and-Send Verifiable Universal Blind Quantum Computation & Graph state generation\\
+ & Equatorial plane measurement\\
+ & Quantum One Time Pad\\
+ & Quantum memory (size depends on graph considered, do not need to store the whole graph)\\
+\hline
+Measurement-Only Verifiable Universal Blind Quantum Computation & Graph state generation (C-Z, + states preparation, + quantum memory)\\
+ & Equatorial plane measurement\\
+ & Quantum memory\\
+\hline
+Prepare-and-Send Verifiable Quantum Fully Homomorphic Encryption & TDO\\
+\hline
+Secure Multiparty Delegated Quantum Computation & Graph state generation\\
+ & Verifiable secret sharing\\
+ & TDO\\
+\hline
+State Teleportation & EPR state source and broadcasting\\
+ & Bell measurements\\
+\hline
+Weak String Erasure & BB84 Encoding and Decoding\\
+\hline
+Certified Finite / Infinite Randomness Expansion & BB84 Encoding and Decoding\\
+ & EPR generation between 2 measurement devices\\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+\section{Task extraction and categorisation}
+\label{sec:org608ac1a}
+
+\begin{center}
+\begin{tabular}{llll}
+Function & Layer & TNetwork stage & Comment\\
+\hline
+Sending qubit & Transport / Session &  & \\
+\hline
+Sending qubit blocks & Transport / Session &  & \\
+\hline
+BB84 Encoding & Presentation &  & \\
+\hline
+BB84 Decoding & Presentation &  & \\
+\hline
+Quantum One Time Pad / confidential channel (encoding and decoding) & Session &  & \\
+\hline
+Classical authenticated channel & Off &  & \\
+\hline
+Creation and braodcast of GHZ state & Network &  & \\
+\hline
+Creation and broadcast of any stabilizer state & Network &  & \\
+\hline
+Creation and broadcast of arbitrary graph states & Network &  & \\
+\hline
+Single Qubit Measurement in equatorial plane & Presentation &  & \\
+\hline
+Local Pauli gates & Off &  & \\
+\hline
+Local Clifford gates & Off &  & \\
+\hline
+Local memory & Off &  & \\
+\hline
+Non Cliffort gates & Off &  & \\
+\hline
+Anonymous transmission channel & Transport / Session &  & Keep?\\
+\hline
+Teleportation protocol & Transport &  & \\
+\hline
+Verification of stabilizer state & Off &  & \\
+\hline
+(V)QSS & Off &  & Keep?\\
+\hline
+Quatum authenticated channel & Transport / Session &  & \\
+\hline
+QFactory & Off &  & \\
+\hline
+Equatorial states preparation (local) arbitrary angle or given set & Off &  & \\
+\hline
+Swap Test & Off &  & \\
+\hline
+Multi qubit POVM & Presentation &  & \\
+\hline
+Privacy amplification & Off &  & \\
+\hline
+Information reconciliation & Off &  & \\
+\hline
+Secure classical broadcast channel & Tranport / Session &  & \\
+\hline
+Common Shared Randomness & Off &  & \\
+\hline
+Weak Coin Flipping & Application &  & \\
+\hline
+Quantum 1 way function & Off &  & \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\section{KG}
+\label{sec:org9b2ab16}
+\section{Software implementation recommendations}
+\label{sec:org09455ed}
+\section{Hardware integration recommendations}
+\label{sec:org2f6b776}
+\end{document}

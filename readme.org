@@ -13,7 +13,6 @@
   - Speed
 - Map the various tasks in a KG and find which are useful
 
-
 * Results
 ** Protocol list + identified atomic tasks
 ** Task categorization

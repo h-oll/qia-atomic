@@ -12,13 +12,13 @@ class undersqore:
         self.S = backend_mapping["S"]
         self.T = backend_mapping["T"]
 
-        self.PREP = backend_mapping["Qubit"](node) 
+        self.PREP = lambda: backend_mapping["PREP"](node) 
         self.MEAS = backend_mapping["MEAS"]
         self.DISP = backend_mapping["DISP"]
 
         self.EPR = backend_mapping["EPR"]
         self.SEND = lambda *args: backend_mapping["SEND"](*args, node=node)
-        self.RECV = backend_mapping["RECV"]
+        self.RECV = lambda: backend_mapping["RECV"](node)
         self.TELE = backend_mapping["TELE"]
 
         def check():

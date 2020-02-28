@@ -1,4 +1,4 @@
-from undersqore import undersqore
+from qpzlib import qpzlib
 
 ###################################
 ## Examples using SimulaQron / CQC
@@ -8,7 +8,7 @@ from mappings.simulaqron import mapping
 
 with CQCConnection("Alice") as Alice:
 
-    _ = undersqore(mapping, Alice)
+    _ = qpzlib(mapping, Alice)
     
     #use library to prepare a single qubit
     # all commands are applied locally: no need to specify the node
@@ -25,7 +25,7 @@ with CQCConnection("Alice") as Alice:
 
 
 with CQCConnection("Bob") as Bob:
-    _ = undersqore(mapping, Bob)
+    _ = qpzlib(mapping, Bob)
 
     # receive a qubit
     q = _.RECV()

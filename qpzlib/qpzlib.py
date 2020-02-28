@@ -1,4 +1,4 @@
-class undersqore:
+class qpzlib:
     def __init__(self, backend_mapping, node):
 
         self.X = backend_mapping["X"]
@@ -30,15 +30,15 @@ class undersqore:
                 for g in reqs[f]:
                     if not(hasattr(self,g)) or (backend_mapping[g] is None): availability = False
                 if availability:
-                    print(f"""Undersqore: {f} is available""")
+                    print(f"""Quantum Protocol Zoo Lib: {f} is available""")
                 else:
-                    print(f"""Undersqore: {f} is unavailable""")
+                    print(f"""Quantum Protocol Zoo Lib: {f} is unavailable""")
                     setattr(self, f, self.raiseException)
 
         check()
 
     def raiseException(*args, **kwargs):
-        raise NameError(f"""Undersqore function is unavailable because the backend does not provide a necessary functionality""")
+        raise NameError(f"""Quantum Protocol Zoo Lib function is unavailable because the backend does not provide a necessary functionality""")
 
 
     def qotp(self, block, key):

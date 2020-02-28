@@ -7,7 +7,7 @@ from hypothesis.strategies import text
 import hypothesis.strategies as st
 
 
-from undersqore import undersqore
+from qpzlib import qpzlib
 
 ## tests using simulaqron backend on a single node
 from cqc.pythonLib import CQCConnection
@@ -16,7 +16,7 @@ from mappings.simulaqron import mapping
 if __name__ == "__main__": 
 
     with CQCConnection("Alice") as Alice:
-        _ = undersqore(mapping, Alice)
+        _ = qpzlib(mapping, Alice)
 
         @settings(deadline=None)
         @given(st.lists(st.tuples(

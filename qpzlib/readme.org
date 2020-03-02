@@ -1,0 +1,16 @@
+#+TITLE: Using QPZLib
+#+AUTHOR: H. Ollivier
+#+DATE: 2020-03-02
+
+* Status
+The library is under active development but in a very ealy stage. 
+
+* Install
+Clone the repository from the master branch. Add the path to the library to your =PYTHONPATH=
+
+=export PYTHONPATH=$PYTHONPATH:<absolute_path_to_QPZLib>=
+
+* Usage
+Look at the =examples.py= file. The library is instantiated for each node (as if the nodes were independent computers, each loading its version of the library). Currently, only the Quantum One Time Pad Encoding and Decoding function is available. 
+
+New atomic functions will be added following the list established by extracting atomic functions from the Quantum Protocol Zoo.

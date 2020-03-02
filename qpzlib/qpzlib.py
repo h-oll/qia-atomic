@@ -42,7 +42,7 @@ class qpzlib:
 
 
     def qotp(self, block, key):
-        '''
+        """
         Quantum One Time Pad Encryption/Decryption
 
         Qubit Iterable -> Integer Iterable -> Qubit Iterable
@@ -54,7 +54,7 @@ class qpzlib:
         Tests: 
           - operation is self inverse 
           - output states are random
-        '''
+        """
 
         for q, k in zip(block, key):
             if k == 0: pass

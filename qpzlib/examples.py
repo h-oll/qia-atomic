@@ -3,34 +3,97 @@ from qpzlib import qpzlib
 ###################################
 ## Examples using SimulaQron / CQC
 
-from cqc.pythonLib import CQCConnection
-from mappings.simulaqron import mapping
+def simulaqron():
 
-with CQCConnection("Alice") as Alice:
+    from cqc.pythonLib import CQCConnection
+    from mappings.simulaqron import mapping
 
-    _ = qpzlib(mapping, Alice)
+    with CQCConnection("Alice") as Alice:
+
+        _ = qpzlib(mapping, Alice)
+
+        #use library to prepare a single qubit
+        # all commands are applied locally: no need to specify the node
+        q = _.PREP() 
+
+        # show info about created qubit
+        _.DISP(q)
+
+        # sending to Bob (need to pass the arguments using the syntax used by the backend used)
+        _.SEND(q, "Bob") 
+
+
+    with CQCConnection("Bob") as Bob:
+        _ = qpzlib(mapping, Bob)
+
+        # receive a qubit
+        q = _.RECV()
+
+        # show info about this qubit
+        _.DISP(q)
+
+###################################
+## Examples using QuNetSim
+## To use QuNetSim, add its path to
+## PYTHONPATH
+## export PYTHONPATH=$PYTHONPATH:<path_to_qunetsim>
+
+def qunetsim():
+    from components.host import Host
+    from components.network import Network
+    from objects.qubit import Qubit
+
+    network = Network.get_instance()
+    nodes = ["Alice", "Bob", "Eve", "Dean"]
+    network.start(nodes)
+    network.delay = 0.1
+
+    host_alice = Host('Alice')
+    host_alice.add_connection('Bob')
+    host_alice.start()
+
+    host_bob = Host('Bob')
+    host_bob.add_connection('Alice')
+    host_bob.add_connection('Eve')
+    host_bob.start()
+
+    host_eve = Host('Eve')
+    host_eve.add_connection('Bob')
+    host_eve.add_connection('Dean')
+    host_eve.start()
+
+    host_dean = Host('Dean')
+    host_dean.add_connection('Eve')
+    host_dean.start()
+
+    network.add_host(host_alice)
+    network.add_host(host_bob)
+    network.add_host(host_eve)
+    network.add_host(host_dean)
+
+    from mappings.qunetsim import mapping
     
-    #use library to prepare a single qubit
-    # all commands are applied locally: no need to specify the node
-    q = _.PREP() 
+    #return host_alice, host_bob, host_eve, network
 
-    # print command from the qubit class provided by the backend
-    print(q) 
+    def source_protocol(source_host, target_host_id):
+        _ = qpzlib(mapping, source_host)
+        for i in range(5):
+            q = _.PREP()
+            q = _.H(q)
+            print("sending"), _.DISP(q)            
+            _.SEND(q,target_host_id)
+        
+    def target_protocol(target_host, source_host_id):
+        _ = qpzlib(mapping, target_host)
+        for i in range(5):
+            print(source_host_id)
+            q = _.RECV(source_host_id)
+            print("recieved"), _.DISP(q)
 
-    # print command using the library
-    _.DISP(q)
+    host_alice.run_protocol(source_protocol, (host_bob.host_id,))
+    host_bob.run_protocol(target_protocol, (host_alice.host_id,))
 
-    # sending to Bob (need to pass the arguments using the syntax used by the backend used)
-    _.SEND(q, "Bob") 
+if __name__ == '__main__':
+    #simulaqron()
+    qunetsim()
 
-
-with CQCConnection("Bob") as Bob:
-    _ = qpzlib(mapping, Bob)
-
-    # receive a qubit
-    q = _.RECV()
-
-    # show info about this qubit
-    _.DISP(q)
-
-    _.qotp_enc(q)

@@ -1,4 +1,5 @@
-from cqc.pythonLib import qubit
+#from components.host import Host as QNSHost
+from objects.qubit import Qubit 
 
 def X(q): q.X(); return q
 def Y(q): q.Y(); return q
@@ -10,14 +11,14 @@ def T(q): q.T(); return q
 
 def CNOT(p,q): p.CNOT(q); return p, q
 
-def PREP(node): return qubit(node)
+def PREP(node): return Qubit(node)
 def MEAS(q): return q.measure()
-def DISP(q): print(q, f"""QID: {q._qID}"""); return None
-def QID(q): return q._qID
+def DISP(q): print(q, f"""QID: {q.id}"""); return None
+def QID(q): return q.id
 
 #def EPR(): return None
-def SEND(q, target_id, node): node.sendQubit(q, target_id); return None
-def RECV(node): return node.recvQubit()
+def SEND(q, target_id, node): node.send_qubit(target_id, q, await_ack=True); return None
+def RECV(source_id, node): return node.get_data_qubit(host_id=source_id, wait=10)
 #def TELE(): return None
 
 mapping = {
@@ -41,4 +42,3 @@ mapping = {
     "RECV": RECV,
     "TELE": None
     }
-

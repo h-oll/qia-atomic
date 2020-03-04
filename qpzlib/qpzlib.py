@@ -85,11 +85,11 @@ class qpzlib:
         self.CNOT(q1,q0)
         self.CNOT(q2,q1)
         self.CNOT(q0,q2)
-        self.invT(q1)
+        self.Tinv(q1)
         self.T(q2)
         self.CNOT(q0,q1)
-        self.invT(q0)
-        self.invT(q1)
+        self.Tinv(q0)
+        self.Tinv(q1)
         self.CNOT(q2,q1)
         self.CNOT(q0,q2)
         self.CNOT(q1,q0)
@@ -143,7 +143,7 @@ class qpzlib:
         elif base == 2: 
             if bit == 0 : q = self.PREP()
             elif bit == 1 : q = self.X(self.PREP())
-        if base == 3: 
+        elif base == 3: 
             if bit == 0 : q = self.K(self.PREP())
             elif bit == 1 : q = self.K(self.X(self.PREP()))
         else: raise NameError("Cannot prepare this state")

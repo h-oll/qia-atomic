@@ -13,6 +13,46 @@ from qpzlib import qpzlib
 from cqc.pythonLib import CQCConnection
 from mappings.simulaqron import mapping
 
+def qotp_t(ck_b):
+    print('.'), 
+    def prep_classical(c):
+        if c == 1: q = _.PREP()
+        elif c == 2: q = _.X(_.PREP())
+        elif c == 3: q = _.H(_.PREP())
+        elif c == 4: q = _.Z(_.H(_.PREP()))
+        elif c == 5: q = _.K(_.PREP())
+        elif c == 6: q = _.Z(_.K(_.PREP()))
+        else: raise NameError("Cannot prepare this state")
+        return q
+
+    def meas_classical(q, c):
+        if c == 1: m = _.MEAS(q)
+        elif c == 2: m = _.MEAS(_.X(q))
+        elif c == 3: m = _.MEAS(_.H(q))
+        elif c == 4: m = _.MEAS(_.H(_.Z(q)))
+        elif c == 5: m = _.MEAS(_.K(q))
+        elif c == 6: m = _.MEAS(_.K(_.Z(q)))
+        else: raise NameError("Cannot measure in this basis")
+        return m
+
+    c_b, k_b = zip(*ck_b) # create a list for classical input values, and a list with the encoding key
+    q_b = [prep_classical(c) for c in c_b] # create a list of qubits according to the classical inputs
+    qenc_b = _.qotp(q_b, k_b) # encode
+    qdec_b = _.qotp(qenc_b, k_b) #decode
+    meas_results = [meas_classical(q, c) for q, c in zip(qdec_b, c_b)] #measure the result given the classical input
+
+    assert functools.reduce(lambda acc, cur: acc and (cur == 0), meas_results, True) # make sure the value is 0 on all measured qubits
+
+
+def pauli_prep_t(bit, base):
+    print('.'), 
+    q = _.pauli_prep(bit, base)
+    if base == 1: m = _.MEAS(_.H(q))
+    elif base == 2: m = _.MEAS(q)
+    elif base == 3: m = _.MEAS(_.K(q))
+
+    assert (m == bit)
+        
 if __name__ == "__main__": 
 
     with CQCConnection("Alice") as Alice:
@@ -23,35 +63,15 @@ if __name__ == "__main__":
             st.integers(min_value=1, max_value=6),
             st.integers(min_value=0, max_value=3))
                         , min_size=1, max_size=10))
-        def test_qotp(ck_b):
-            def prep_classical(c):
-                if c == 1: q = _.PREP()
-                elif c == 2: q = _.X(_.PREP())
-                elif c == 3: q = _.H(_.PREP())
-                elif c == 4: q = _.Z(_.H(_.PREP()))
-                elif c == 5: q = _.K(_.PREP())
-                elif c == 6: q = _.Z(_.K(_.PREP()))
-                else: raise NameError("Cannot prepare this state")
-                return q
+        def test_qotp(ck_b): qotp_t(ck_b)
 
-            def meas_classical(q, c):
-                if c == 1: m = _.MEAS(q)
-                elif c == 2: m = _.MEAS(_.X(q))
-                elif c == 3: m = _.MEAS(_.H(q))
-                elif c == 4: m = _.MEAS(_.H(_.Z(q)))
-                elif c == 5: m = _.MEAS(_.K(q))
-                elif c == 6: m = _.MEAS(_.K(_.Z(q)))
-                else: raise NameError("Cannot measure in this basis")
-                return m
+        @given(st.integers(min_value=0, max_value=1), st.integers(min_value=1, max_value=3))
+        @settings(deadline=None)
+        def test_pauli_prep(bit, base): pauli_prep_t(bit, base)
 
-            c_b, k_b = zip(*ck_b) # create a list for classical input values, and a list with the encoding key
-            print("qotp_test - classical preparation / encryption key pairs: ", ck_b)
-            q_b = [prep_classical(c) for c in c_b] # create a list of qubits according to the classical inputs
-            qenc_b = _.qotp(q_b, k_b) # encode
-            qdec_b = _.qotp(qenc_b, k_b) #decode
-            meas_results = [meas_classical(q, c) for q, c in zip(qdec_b, c_b)] #measure the result given the classical input
-
-            assert functools.reduce(lambda acc, cur: acc and (cur == 0), meas_results, True) # make sure the value is 0 on all measured qubits
-
-
+        print("Pauli Preparation Tests")
+        test_pauli_prep()
+        
+        print("Quantum OTP Tests")
         test_qotp()
+        

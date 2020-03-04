@@ -8,6 +8,8 @@ def H(q): q.H(); return q
 def K(q): q.K(); return q
 def T(q): q.T(); return q
 
+def invT(q): q.rot_Z(256 - 256//8); return q
+
 def CNOT(p,q): p.CNOT(q); return p, q
 
 def PREP(node): return qubit(node)
@@ -28,6 +30,7 @@ mapping = {
     
     "K": K,
     "T": T,
+    "invT":invT,
 
     "CNOT": CNOT,
 

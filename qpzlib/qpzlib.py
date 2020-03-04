@@ -62,5 +62,3 @@ class qpzlib:
             if k == 2: self.Z(q)
             if k == 3: self.Y(q)
             yield q
-
-    

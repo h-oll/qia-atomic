@@ -1,25 +1,26 @@
 from cqc.pythonLib import qubit
 
-def X(q): q.X(); return q
-def Y(q): q.Y(); return q
-def Z(q): q.Z(); return q
-def H(q): q.H(); return q
+def X(q, *args, **kwargs): q.X(*args, **kwargs); return q
+def Y(q, *args, **kwargs): q.Y(*args, **kwargs); return q
+def Z(q, *args, **kwargs): q.Z(*args, **kwargs); return q
+def H(q, *args, **kwargs): q.H(*args, **kwargs); return q
 
-def K(q): q.K(); return q
-def T(q): q.T(); return q
+def K(q, *args, **kwargs): q.K(*args, **kwargs); return q
+def T(q, *args, **kwargs): q.T(*args, **kwargs); return q
 
-def invT(q): q.rot_Z(256 - 256//8); return q
+def Tinv(q, *args, **kwargs): q.rot_Z(224, *args, **kwargs); return q
 
-def CNOT(p,q): p.CNOT(q); return p, q
+def CNOT(p, q, *args, **kwargs): p.CNOT(q, *args, **kwargs); return p, q
 
-def PREP(node): return qubit(node)
-def MEAS(q): return q.measure()
+def PREP(node, *args, **kwargs): return qubit(node, *args, **kwargs)
+def MEAS(q, *args, **kwargs): return q.measure(*args, **kwargs)
+
 def DISP(q): print(q, f"""QID: {q._qID}"""); return None
 def QID(q): return q._qID
 
 #def EPR(): return None
-def SEND(q, target_id, node): node.sendQubit(q, target_id); return None
-def RECV(node): return node.recvQubit()
+def SEND(q, target_id, node, *args, **kwargs): node.sendQubit(q, target_id, *args, **kwargs); return None
+def RECV(node, *args, **kwargs): return node.recvQubit(*args, **kwargs)
 #def TELE(): return None
 
 mapping = {
@@ -30,7 +31,7 @@ mapping = {
     
     "K": K,
     "T": T,
-    "invT":invT,
+    "Tinv":Tinv,
 
     "CNOT": CNOT,
 

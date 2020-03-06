@@ -157,20 +157,24 @@ class qpzlib:
             qubits.append(q)
         return qubits
 
-    def pauli_meas(self, qubits):
+    def pauli_meas(self, qubits, bases):
         """
-        return a stream of measurement for bb84 and the random based uses
+        return a stream of measurement
         param:
             qubits: iterable of qubits objects
+            bases: iterable of 1,2 or 3. 1 for base X, 2 for base Z, 3 for base Y
         """   
-        basis_bob= []
+        vals=zip(qubits, bases)
         measurements = []
-        for q in qubits:
-            random_basis_bob = random.randint(0,1)
-            basis_bob.append(random_basis_bob)
-            if random_basis_bob == 1:
-               self.H(q)
-            m = self.MEAS(q)
-            measurements.append(m)
-        return measurements,basis_bob
+        """for (qubit,base) in vals:
+            if base == 1: 
+                qubit = self.H(self.PREP())
+            elif base == 2: 
+                qubit = self.X(self.PREP())
+            elif base == 3: 
+                qubit = self.K(self.PREP())
+            else: raise NameError("Cannot prepare this state")
+            m = self.MEAS(qubit)
+            measurements.append(m)"""
+        return measurements
 

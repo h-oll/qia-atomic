@@ -1,6 +1,7 @@
 import unittest
 import random
 import functools
+import time
 
 from hypothesis import given, example, settings
 from hypothesis.strategies import text
@@ -14,7 +15,7 @@ from cqc.pythonLib import CQCConnection
 from mappings.simulaqron import mapping
 
 def qotp_t(ck_b):
-    print('.'), 
+    print('.', end='', flush=True) 
     def prep_classical(c):
         if c == 1: q = _.PREP()
         elif c == 2: q = _.X(_.PREP())
@@ -45,13 +46,28 @@ def qotp_t(ck_b):
 
 
 def pauli_prep_t(bit, base):
-    print('.'), 
+    print('.', end='', flush=True) 
     q = _.pauli_prep(bit, base)
     if base == 1: m = _.MEAS(_.H(q))
     elif base == 2: m = _.MEAS(q)
     elif base == 3: m = _.MEAS(_.K(q))
 
     assert (m == bit)
+
+def ghz_t(nb_target_nodes, basis):
+    print('.', end= '', flush=True)
+    def meas(q, basis):
+        if basis == 1: #X measurement
+            return _.MEAS(_.H(q))
+        elif basis == 2: #Z measurement
+            return _.MEAS(q)
+
+    ghz_state = _.prep_ghz(nb_target_nodes)
+    meas_results = [meas(q, basis) for q in ghz_state]
+    nb_parties = 1 + nb_target_nodes
+
+    assert functools.reduce(lambda acc, cur: acc + cur, meas_results, 0) % (2 if basis == 1 else nb_parties) == 0
+        
         
 if __name__ == "__main__": 
 
@@ -59,19 +75,22 @@ if __name__ == "__main__":
         _ = qpzlib(mapping, Alice)
 
         @settings(deadline=None)
-        @given(st.lists(st.tuples(
-            st.integers(min_value=1, max_value=6),
-            st.integers(min_value=0, max_value=3))
-                        , min_size=1, max_size=10))
+        @given(st.lists(st.tuples(st.integers(min_value=1, max_value=6), st.integers(min_value=0, max_value=3)), min_size=1, max_size=10))
         def test_qotp(ck_b): qotp_t(ck_b)
 
         @given(st.integers(min_value=0, max_value=1), st.integers(min_value=1, max_value=3))
         @settings(deadline=None)
         def test_pauli_prep(bit, base): pauli_prep_t(bit, base)
 
-        print("Pauli Preparation Tests")
+        @given(st.integers(min_value=1, max_value=3), st.integers(min_value=1, max_value=2))
+        @settings(deadline=None)
+        def test_ghz(nb_target_nodes, basis): ghz_t(nb_target_nodes, basis)
+
+        print("\n Pauli Preparation Tests")
         test_pauli_prep()
         
-        print("Quantum OTP Tests")
+        print("\n Quantum OTP Tests")
         test_qotp()
-        
+
+        print("\n Local GHZ preparation")
+        test_ghz()

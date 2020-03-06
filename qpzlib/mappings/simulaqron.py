@@ -10,7 +10,7 @@ def T(q, *args, **kwargs): q.T(*args, **kwargs); return q
 
 def Tinv(q, *args, **kwargs): q.rot_Z(224, *args, **kwargs); return q
 
-def CNOT(p, q, *args, **kwargs): p.CNOT(q, *args, **kwargs); return p, q
+def CNOT(p, q, *args, **kwargs): p.cnot(q, *args, **kwargs); return p, q
 
 def PREP(node, *args, **kwargs): return qubit(node, *args, **kwargs)
 def MEAS(q, *args, **kwargs): return q.measure(*args, **kwargs)

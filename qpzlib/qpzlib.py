@@ -149,3 +149,15 @@ class qpzlib:
         else: raise NameError("Cannot prepare this state")
         return q
 
+    def prep_ghz(self, nb_target_nodes):
+        def add_one_qubit(q):
+            _, r = self.CNOT(q, self.PREP())
+            return r
+
+        q = self.H(self.PREP())
+
+        return [q] + [add_one_qubit(q) for _ in range(nb_target_nodes)]
+
+        
+
+    

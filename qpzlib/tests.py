@@ -7,7 +7,6 @@ from hypothesis import given, example, settings
 from hypothesis.strategies import text
 import hypothesis.strategies as st
 
-
 from qpzlib import qpzlib
 
 ## tests using simulaqron backend on a single node
@@ -86,11 +85,14 @@ if __name__ == "__main__":
         @settings(deadline=None)
         def test_ghz(nb_target_nodes, basis): ghz_t(nb_target_nodes, basis)
 
-        print("\n Pauli Preparation Tests")
+        print("Pauli Preparation Tests")
         test_pauli_prep()
+        print("OK")
         
-        print("\n Quantum OTP Tests")
+        print("Quantum OTP Tests")
         test_qotp()
-
-        print("\n Local GHZ preparation")
+        print("OK")
+        
+        print("Local GHZ preparation")
         test_ghz()
+        print("OK")

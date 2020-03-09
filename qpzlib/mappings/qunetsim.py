@@ -1,24 +1,27 @@
 #from components.host import Host as QNSHost
-from objects.qubit import Qubit 
+from objects.qubit import Qubit as qubit
 
-def X(q): q.X(); return q
-def Y(q): q.Y(); return q
-def Z(q): q.Z(); return q
-def H(q): q.H(); return q
+def X(q, *args, **kwargs): q.X(*args, **kwargs); return q
+def Y(q, *args, **kwargs): q.Y(*args, **kwargs); return q
+def Z(q, *args, **kwargs): q.Z(*args, **kwargs); return q
+def H(q, *args, **kwargs): q.H(*args, **kwargs); return q
 
-def K(q): q.K(); return q
-def T(q): q.T(); return q
+def K(q, *args, **kwargs): q.K(*args, **kwargs); return q
+def T(q, *args, **kwargs): q.T(*args, **kwargs); return q
 
-def CNOT(p,q): p.CNOT(q); return p, q
+def Tinv(q, *args, **kwargs): q.rz(5.49778714378, *args, **kwargs); return q
 
-def PREP(node): return Qubit(node)
-def MEAS(q): return q.measure()
+def CNOT(p, q, *args, **kwargs): p.CNOT(q, *args, **kwargs); return p, q
+
+def PREP(node, *args, **kwargs): return qubit(node, *args, **kwargs)
+def MEAS(q, *args, **kwargs): return q.measure(*args, **kwargs)
+
 def DISP(q): print(q, f"""QID: {q.id}"""); return None
 def QID(q): return q.id
 
 #def EPR(): return None
-def SEND(q, target_id, node): node.send_qubit(target_id, q, await_ack=True); return None
-def RECV(source_id, node): return node.get_data_qubit(host_id=source_id, wait=10)
+def SEND(q, target_id, node, *args, **kwargs): node.send_qubit(target_id, q, *args, await_ack=True, **kwargs); return None
+def RECV(source_id, node, *args, **kwargs): return node.get_data_qubit(*args, host_id=source_id, wait=10, **kwargs)
 #def TELE(): return None
 
 mapping = {
@@ -29,6 +32,7 @@ mapping = {
     
     "K": K,
     "T": T,
+    "Tinv":Tinv,
 
     "CNOT": CNOT,
 

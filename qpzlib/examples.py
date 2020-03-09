@@ -14,11 +14,14 @@ def simulaqron():
 
         #use library to prepare a single qubit
         # all commands are applied locally: no need to specify the node
-        q = _.PREP() 
+        q = _.PREP()
 
         # show info about created qubit
         _.DISP(q)
 
+        # flip the qubit
+        _.X(q)
+        
         # sending to Bob (need to pass the arguments using the syntax used by the backend used)
         _.SEND(q, "Bob") 
 

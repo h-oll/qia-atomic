@@ -9,6 +9,7 @@ class qpzlib:
 
         self.K = backend_mapping["K"]
         self.T = backend_mapping["T"]
+        self.Tinv = backend_mapping["Tinv"]
 
         self.PREP = lambda *args: backend_mapping["PREP"](*args, node=node) 
         self.MEAS = backend_mapping["MEAS"]
@@ -62,5 +63,130 @@ class qpzlib:
             if k == 2: self.Z(q)
             if k == 3: self.Y(q)
             yield q
+
+
+    
+    def CSWAP(self, q0, q1, q2):
+
+        """
+        controll swap on two qubits q1 and q2, q0 is a controll qubit
+        implementation from https://www.mathstat.dal.ca/~selinger/quipper/doc/Quipper-Libraries-GateDecompositions.html
+        params : 
+        q0,q1,q2: qubits
+
+        """
+        self.CNOT(q2,q1)
+        self.H(q2)
+        self.T(q0)
+        self.T(q1)
+        self.T(q2)
+        self.CNOT(q1,q0)
+        self.CNOT(q2,q1)
+        self.CNOT(q0,q2)
+        self.Tinv(q1)
+        self.T(q2)
+        self.CNOT(q0,q1)
+        self.Tinv(q0)
+        self.Tinv(q1)
+        self.CNOT(q2,q1)
+        self.CNOT(q0,q2)
+        self.CNOT(q1,q0)
+        self.H(q2)
+        self.CNOT(q2,q1)
+        return
+
+    def swap_test(self, q1, q2):
+
+        """
+        launch the swap test
+        params:
+            q1, q2: iterable of qubits
+
+        """
+
+        q=zip(q1,q2)
+        q0 = self.PREP()
+        self.H(q0)
+
+        for q1,q2 in q:
+            self.CSWAP(q0, q1, q2)
+            print(self.MEAS(q1), self.MEAS(q2))
+
+        self.H(q0)
+        m = self.MEAS(q0)
+
+        print ('q0 measure is ', m)
+        
+        return m
+
+    def qrng(self) :
+
+        """
+        return random 0 or 1 via hadarmard gate
+        param:
+            location_strings: string, node where the q.h is happening, 'Alice' by default
+        
+        """
+        q=self.PREP()
+        self.H(q)
+        number = self.MEAS(q)
+        print('Outcome of the measure:', number)
+        return number
+
+    def pauli_prep(self, bits, bases):
+        """
+        return a stream of qubits based on iteratives of bits and bases
+        param:
+            bits: iterable of 0 or 1
+            bases: iterable of 1,2 or 3. 1 for base X, 2 for base Z, 3 for base Y
+        """
+
+        qubits= []
+        vals= zip(bits,bases)
+        for(bit,base) in vals:
+            if base == 1: 
+                if bit == 0 : q = self.H(self.PREP())
+                elif bit == 1 : q = self.H(self.X(self.PREP()))
+            elif base == 2: 
+                if bit == 0 : q = self.PREP()
+                elif bit == 1 : q = self.X(self.PREP())
+            elif base == 3: 
+                if bit == 0 : q = self.K(self.PREP())
+                elif bit == 1 : q = self.K(self.X(self.PREP()))
+            else: raise NameError("Cannot prepare this state")
+            qubits.append(q)
+        return qubits
+
+    def pauli_meas(self, qubits, bases):
+        """
+        return a stream of measurement
+        param:
+            qubits: iterable of qubits objects
+            bases: iterable of 1,2 or 3. 1 for base X, 2 for base Z, 3 for base Y
+        """   
+        vals=zip(qubits, bases)
+        measurements = []
+        """for (qubit,base) in vals:
+            if base == 1: 
+                qubit = self.H(self.PREP())
+            elif base == 2: 
+                qubit = self.X(self.PREP())
+            elif base == 3: 
+                qubit = self.K(self.PREP())
+            else: raise NameError("Cannot prepare this state")
+            m = self.MEAS(qubit)
+            measurements.append(m)"""
+        return measurements
+
+    def prep_ghz(self, nb_target_nodes):
+        def add_one_qubit(q):
+            _, r = self.CNOT(q, self.PREP())
+            return r
+
+        q = self.H(self.PREP())
+
+        return [q] + [add_one_qubit(q) for _ in range(nb_target_nodes)]
+
+        
 
     

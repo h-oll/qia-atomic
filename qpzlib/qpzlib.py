@@ -1,5 +1,3 @@
-from functools import partial
-
 class qpzlib:
     def __init__(self, backend_mapping, node):
 
@@ -13,14 +11,14 @@ class qpzlib:
         self.T = backend_mapping["T"]
         self.Tinv = backend_mapping["Tinv"]
 
-        self.PREP = partial (backend_mapping["PREP"], node=node)
+        self.PREP = lambda *args: backend_mapping["PREP"](*args, node=node) 
         self.MEAS = backend_mapping["MEAS"]
         self.DISP = backend_mapping["DISP"]
         self.QID = backend_mapping["QID"]
         
         self.EPR = backend_mapping["EPR"]
-        self.SEND = partial (backend_mapping["SEND"], node=node)
-        self.RECV = partial (backend_mapping["RECV"], node=node)
+        self.SEND = lambda *args: backend_mapping["SEND"](*args, node=node)
+        self.RECV = lambda *args: backend_mapping["RECV"](*args, node=node)
         self.TELE = backend_mapping["TELE"]
 
         def check():
@@ -97,12 +95,11 @@ class qpzlib:
         self.CNOT(q2,q1)
         return
 
-    def swap_test(self, conn, q1, q2):
+    def swap_test(self, q1, q2):
 
         """
         launch the swap test
         params:
-            conn: string, node to do the swap
             q1, q2: iterable of qubits
 
         """
@@ -132,22 +129,54 @@ class qpzlib:
         """
         q=self.PREP()
         self.H(q)
-        number = self.MEAS()
+        number = self.MEAS(q)
         print('Outcome of the measure:', number)
         return number
 
-    def pauli_prep(self, bit, base):
-        if base == 1: 
-            if bit == 0 : q = self.H(self.PREP())
-            elif bit == 1 : q = self.H(self.X(self.PREP()))
-        elif base == 2: 
-            if bit == 0 : q = self.PREP()
-            elif bit == 1 : q = self.X(self.PREP())
-        elif base == 3: 
-            if bit == 0 : q = self.K(self.PREP())
-            elif bit == 1 : q = self.K(self.X(self.PREP()))
-        else: raise NameError("Cannot prepare this state")
-        return q
+    def pauli_prep(self, bits, bases):
+        """
+        return a stream of qubits based on iteratives of bits and bases
+        param:
+            bits: iterable of 0 or 1
+            bases: iterable of 1,2 or 3. 1 for base X, 2 for base Z, 3 for base Y
+        """
+
+        qubits= []
+        vals= zip(bits,bases)
+        for(bit,base) in vals:
+            if base == 1: 
+                if bit == 0 : q = self.H(self.PREP())
+                elif bit == 1 : q = self.H(self.X(self.PREP()))
+            elif base == 2: 
+                if bit == 0 : q = self.PREP()
+                elif bit == 1 : q = self.X(self.PREP())
+            elif base == 3: 
+                if bit == 0 : q = self.K(self.PREP())
+                elif bit == 1 : q = self.K(self.X(self.PREP()))
+            else: raise NameError("Cannot prepare this state")
+            qubits.append(q)
+        return qubits
+
+    def pauli_meas(self, qubits, bases):
+        """
+        return a stream of measurement
+        param:
+            qubits: iterable of qubits objects
+            bases: iterable of 1,2 or 3. 1 for base X, 2 for base Z, 3 for base Y
+        """   
+        vals=zip(qubits, bases)
+        measurements = []
+        """for (qubit,base) in vals:
+            if base == 1: 
+                qubit = self.H(self.PREP())
+            elif base == 2: 
+                qubit = self.X(self.PREP())
+            elif base == 3: 
+                qubit = self.K(self.PREP())
+            else: raise NameError("Cannot prepare this state")
+            m = self.MEAS(qubit)
+            measurements.append(m)"""
+        return measurements
 
     def prep_ghz(self, nb_target_nodes):
         def add_one_qubit(q):

@@ -1,3 +1,5 @@
+from functools import partial
+
 class qpzlib:
     def __init__(self, backend_mapping, node):
 
@@ -11,14 +13,14 @@ class qpzlib:
         self.T = backend_mapping["T"]
         self.Tinv = backend_mapping["Tinv"]
 
-        self.PREP = lambda *args: backend_mapping["PREP"](*args, node=node) 
+        self.PREP = partial (backend_mapping["PREP"], node=node)
         self.MEAS = backend_mapping["MEAS"]
         self.DISP = backend_mapping["DISP"]
         self.QID = backend_mapping["QID"]
         
         self.EPR = backend_mapping["EPR"]
-        self.SEND = lambda *args: backend_mapping["SEND"](*args, node=node)
-        self.RECV = lambda *args: backend_mapping["RECV"](*args, node=node)
+        self.SEND = partial (backend_mapping["SEND"], node=node)
+        self.RECV = partial (backend_mapping["RECV"], node=node)
         self.TELE = backend_mapping["TELE"]
 
         def check():

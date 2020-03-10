@@ -10,7 +10,14 @@ Clone the repository from the master branch. Add the path to the library to your
 
 =export PYTHONPATH=$PYTHONPATH:<absolute_path_to_QPZLib>=
 
+* Design principles
+- Backend mappings
+- Modularity
+- Tests
+
 * Usage
-Look at the =examples.py= file. The library is instantiated for each node (as if the nodes were independent computers, each loading its version of the library). Currently, only the Quantum One Time Pad Encoding and Decoding function is available. 
+Look at the =examples/examples.py= file. The library is instantiated for each node (as if the nodes were independent computers, each loading its version of the library). 
+
+Other sources of inspirations are the tests defined in the =tests= directory
 
 New atomic functions will be added following the list established by extracting atomic functions from the Quantum Protocol Zoo.

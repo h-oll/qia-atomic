@@ -1,4 +1,9 @@
-from qpzlib import qpzlib
+import os,sys,inspect
+current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parent_dir = os.path.dirname(current_dir)
+sys.path.insert(0, parent_dir) 
+
+from qpzlib import qpzlib 
 
 ###################################
 ## Examples using SimulaQron / CQC
@@ -97,6 +102,6 @@ def qunetsim():
     host_bob.run_protocol(target_protocol, (host_alice.host_id,))
 
 if __name__ == '__main__':
-    #simulaqron()
-    qunetsim()
+    simulaqron()
+    #qunetsim()
 

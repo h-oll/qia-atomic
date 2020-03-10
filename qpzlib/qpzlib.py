@@ -1,11 +1,10 @@
 from functools import partial
 
-from prep import Prep
-from pres import Pres
-from gate import Gate
-from util import Util
-from test import Test
-
+from atomics.prep import Prep
+from atomics.pres import Pres
+from atomics.gate import Gate
+from atomics.util import Util
+from atomics.test import Test
 
 class qpzlib:
     def __init__(self, backend_mapping, node):

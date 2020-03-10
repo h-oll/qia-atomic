@@ -1,5 +1,5 @@
 class Util:
-    def __init__(self, _)
+    def __init__(self, _):
         def qrng() :
 
             """

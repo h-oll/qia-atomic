@@ -15,7 +15,7 @@
 * Purpose
 Application level protocols need to have access to networking services such as entanglement sharing between any two points of the network. While such service is at the heart of the quantum internet architecture, additional functionalities can be required or just convenient to have for better, faster, wider development of application level protocols. 
 
-The purpose of this report is to review a wide range of such protocols searching for atomic repeatable functions while categorising them along several dimensions. By doing so, we aim at providing building blocks that would: 
+The purpose of this report is to review a wide range of such protocols searching for atomic repeatable functions while categorising them along several dimensions. By doing so, we aim at providing building blocks that:
 - lessen the amount of code and control needed while developing applications for the quantum internet (in particular through code reuse);
 - allow benchmarking of the nodes and network capabilities against these tasks;
 - provide functionalities with sound cryptographic definitions;
@@ -29,7 +29,7 @@ The purpose of this report is to review a wide range of such protocols searching
 
 * Review of the quantum protocol zoo
 
-| Protocol                                                              | Atomic Function Candidates                                                              |
+| Protocol                                                              | Functionalities used                                                                    |
 |-----------------------------------------------------------------------+-----------------------------------------------------------------------------------------|
 | <40>                                                                  | <60>                                                                                    |
 | GHZ-based Quantum Anonymous Transmission                              | Classical authenticated channels                                                        |
@@ -153,14 +153,47 @@ The purpose of this report is to review a wide range of such protocols searching
 |-----------------------------------------------------------------------+-----------------------------------------------------------------------------------------|
 
 
+* Task extraction
 
-* Task extraction and categorisation
 
-| Function                                                            | Layer        | Network stage           | Comment                                                          |
+| Function                                                            | Comments                                                                                                |
+|---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------|
+| <40>                                                                | <60>                                                                                                    |
+| Sending qubit                                                       | Could be in transport layer for ent. sharing networks. Lower layers for "direct" transmission netw.     |
+| Sending qubit blocks                                                | Same                                                                                                    |
+| Teleportation protocol                                              | Would be the send qubit layer for ent. sharing networks. Needed standalone for MBQC (updates not sent)  |
+| Creation and braodcast of GHZ state                                 | Possibly 2 subtasks: local creation and broadcast. Single task if network design based on GHZ states    |
+| Creation and broadcast of any stabilizer state                      | Possibly 2 subtasks: local creation and broadcast. Single task if network design based on stab. states  |
+| Creation and broadcast of arbitrary graph states                    | Same                                                                                                    |
+| Quantum One Time Pad / confidential channel (encoding and decoding) |                                                                                                         |
+| BB84 Encoding of classical data                                     | Also useful for unit testing                                                                            |
+| BB84 Decoding to classical data                                     | Same                                                                                                    |
+| Single Qubit Preparation in equatorial plane (finite set of angles) |                                                                                                         |
+| Single Qubit Measurement in equatorial plane (finite set of angles) |                                                                                                         |
+| Multi qubit POVM                                                    |                                                                                                         |
+| Local Pauli gates                                                   |                                                                                                         |
+| Local Clifford gates                                                |                                                                                                         |
+| Local memory manager                                                | Needed to adapt rates to slower devices, prevent network congestions (output free spots, TTL of qubits) |
+| Non Clifford gates                                                  |                                                                                                         |
+| Multi-site verification of stabilizer state                         | Useful in protocols but also for unit testing                                                           |
+| QFactory                                                            |                                                                                                         |
+| Swap Test                                                           |                                                                                                         |
+| Privacy amplification                                               | Might be necessary to provide fast implementations to cope with high throuput devices                   |
+| Information reconciliation                                          | Same                                                                                                    |
+| Quantum 1 way function                                              |                                                                                                         |
+| Secure classical broadcast channel                                  | Specific implementation could be required for high precision timing reasons                             |
+| Classical authenticated channel                                     | Same                                                                                                    |
+| Anonymous transmission channel                                      | Same                                                                                                    |
+| Quantum Authenticated Channel                                       | Might be enough to have a verified shared EPR service and do teleportation                              |
+| Weak Coin Flipping                                                  |                                                                                                         |
+| (Verifiable) Quantum Secret Sharing                                 |                                                                                                         |
+
+* Task categorisation
+| Function                                                            | Layer        | Network stage           | Comments                                                         |
 |---------------------------------------------------------------------+--------------+-------------------------+------------------------------------------------------------------|
-| Sending qubit                                                       | Transport    | Trusted repeater        | Should be provided by the Transport layer.                       |
-| Sending qubit blocks                                                | Transport    | Trusted repeater        | Should be provided by the Transport layer.                       |
-| Teleportation protocol                                              | Transport    | Entanglement generation | Should be provided by the Transport layer.                       |
+| Sending qubit                                                       | Transport    | Trusted repeater        | Should be provided by the Transport layer                        |
+| Sending qubit blocks                                                | Transport    | Trusted repeater        | Should be provided by the Transport layer                        |
+| Teleportation protocol                                              | Transport    | Entanglement generation | Should be provided by the Transport layer                        |
 | Creation and braodcast of GHZ state                                 | Session      | Quantum memory          | Core for GHZ relying protocols (directly tap into network layer) |
 | Creation and broadcast of any stabilizer state                      | Session      | Quantum memory          | Core for GHZ relying protocols (directly tap into network layer) |
 | Creation and broadcast of arbitrary graph states                    | Session      | Quantum memory          | Core for GHZ relying protocols (directly tap into network layer) |

@@ -55,7 +55,7 @@ The purpose of this report is to review a wide range of such protocols searching
 |                                                                       | (Uses verifiable QSS)                                                                   |
 |-----------------------------------------------------------------------+-----------------------------------------------------------------------------------------|
 | Quantum Bit Commitment                                                | BB84 encoding of classical information                                                  |
-| https://arxiv.org/abs/1108.2879                                       | Single qubit measurement in computational and +/- bases                                 |
+| https://arxiv.org/abs/1108.2879                                       | Single qubit measurement in computational and Hadamard bases                            |
 |                                                                       | Secure classical channel                                                                |
 |                                                                       | Fast operations to keep the relativistic constraints                                    |
 |-----------------------------------------------------------------------+-----------------------------------------------------------------------------------------|
@@ -152,76 +152,136 @@ The purpose of this report is to review a wide range of such protocols searching
 |                                                                       | EPR generation between 2 measurement devices                                            |
 |-----------------------------------------------------------------------+-----------------------------------------------------------------------------------------|
 
-
 * Task extraction
+** Sending qubit
+This functionality should be provided at the transport layer for entanglement sharing networks. It would be at the link layer for networks based on direct transmission of quantum informaton (QKD-like networks).
 
+For a transport layer functionality, it is expected to provide reliable service with flow control (allowing the sender to improve its probability of correct transmission by detecting possible congestion at the receiving end or along the way). 
 
-| Function                                                            | Comments                                                                                                |
-|---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------|
-| <40>                                                                | <60>                                                                                                    |
-| Sending qubit                                                       | Could be in transport layer for ent. sharing networks. Lower layers for "direct" transmission netw.     |
-| Sending qubit blocks                                                | Same                                                                                                    |
-| Teleportation protocol                                              | Would be the send qubit layer for ent. sharing networks. Needed standalone for MBQC (updates not sent)  |
-| Creation and braodcast of GHZ state                                 | Possibly 2 subtasks: local creation and broadcast. Single task if network design based on GHZ states    |
-| Creation and broadcast of any stabilizer state                      | Possibly 2 subtasks: local creation and broadcast. Single task if network design based on stab. states  |
-| Creation and broadcast of arbitrary graph states                    | Same                                                                                                    |
-| Quantum One Time Pad / confidential channel (encoding and decoding) |                                                                                                         |
-| BB84 Encoding of classical data                                     | Also useful for unit testing                                                                            |
-| BB84 Decoding to classical data                                     | Same                                                                                                    |
-| Single Qubit Preparation in equatorial plane (finite set of angles) |                                                                                                         |
-| Single Qubit Measurement in equatorial plane (finite set of angles) |                                                                                                         |
-| Multi qubit POVM                                                    |                                                                                                         |
-| Local Pauli gates                                                   |                                                                                                         |
-| Local Clifford gates                                                |                                                                                                         |
-| Local memory manager                                                | Needed to adapt rates to slower devices, prevent network congestions (output free spots, TTL of qubits) |
-| Non Clifford gates                                                  |                                                                                                         |
-| Multi-site verification of stabilizer state                         | Useful in protocols but also for unit testing                                                           |
-| QFactory                                                            |                                                                                                         |
-| Swap Test                                                           |                                                                                                         |
-| Privacy amplification                                               | Might be necessary to provide fast implementations to cope with high throuput devices                   |
-| Information reconciliation                                          | Same                                                                                                    |
-| Quantum 1 way function                                              |                                                                                                         |
-| Secure classical broadcast channel                                  | Specific implementation could be required for high precision timing reasons                             |
-| Classical authenticated channel                                     | Same                                                                                                    |
-| Anonymous transmission channel                                      | Same                                                                                                    |
-| Quantum Authenticated Channel                                       | Might be enough to have a verified shared EPR service and do teleportation                              |
-| Weak Coin Flipping                                                  |                                                                                                         |
-| (Verifiable) Quantum Secret Sharing                                 |                                                                                                         |
+** Sending qubit blocks
+Same as previous functionality but handling several qubits in a single call.
+
+** Teleportation protocol
+While teleportation is the heart of the transport layer in entanglement sharing networks, it is useful to have each half of the protocol available directly to the programmer as a way to teleport while quantum one time padding information. This is especially useful in measurement based quantum computation for blindness and verification. In this case, teleportation measurement is performed, but the sender does not send the corrections to the receiver.
+
+** Creation and braodcast of GHZ state                                 
+GHZ states are central to several multi-party protocols. Several implementations can be proposed:
+- either a centralized create and broadcast operation using a regular transport layer, 
+- or tapping directly into the network layer for using bipartite entanglement as a way to generate the GHZ state in a decentralized fashion. 
+
+The first option would yield two atomic sub-tasks, while the latter would involve a protocol on its own.
+
+** Creation and broadcast of any stabilizer state
+Same.
+
+** Creation and broadcast of arbitrary graph states
+Same.
+
+** Quantum One Time Pad / confidential channel (encoding and decoding)
+Encoding and decoding are identical, yielding a single atomic task that is entirely performed locally. The "send" part can be performed using the send qubit atomic function and would yield a confidential quantum channel. It can also be implemented directly via teleportation.
+
+** BB84 Encoding of classical data
+One of the most useful encoding. It is used in many protocols and is also helpful in unittesting the library itself. This would be naturally embedded in a slightly more general preparation functionality where all 6 states that are eigenstates of Pauli operators can be prepared at will.
+
+** BB84 Decoding to classical data
+Same reason. Symmetric functionality.
+
+** Single Qubit Preparation in equatorial plane (finite set of angles)
+Useful in the context of measurement based quantum computing. The set of preparation angles is $\{\frac{k\pi}{4}\}_{0\leq k \leq 7}$.
+
+** Single Qubit Measurement in equatorial plane (finite set of angles)
+Same reason. Symmetric functionality.
+
+** Multi qubit POVM
+While it is not possible to allow the implementation of generic POVM's even on a few qubits, some should be available readily as atomic functions. A possibility would be to allow for POVM's obtained as observables defined by stabilizer measurements as it would allow completing basic quantum error correcting schemes.
+
+** Local Pauli gates
+Necessary. Mostly provided by the backend it self.
+
+** Local Clifford gates
+Same.
+
+** Non Clifford gates
+Most backends or hardware provide the ability to perform $T$ gates. These will serve as building blocks for distillation schemes before being used in real circuits.
+
+** Local memory manager
+The idea behind this functionality is to be able to handle various scenario influencing the robustness of protocols, such as being able to tell neighboring nodes that the capacity to accept new qubits is low before they actually send information. It might also be interesting to be able to keep track of the time to live of various qubits so that other parts of the protocols can take that into account and give higher priority to operations with a lower TTL. 
+
+The implementation of such functionality can be done in various ways and will highly depend on the backend and chosen architecture.
+
+** Multi-site verification of stabilizer state
+This allows verified multiparty protocols. It also enters into unit testing for multi-party operations.
+
+** QFactory
+Remote preparation of a classical described quantum state.
+
+** Swap Test
+Implies to add the swap gate first and then the test. It should work indistinctively for individual qubits and blocks of qubits.
+
+** Privacy amplification / Information reconciliation
+Useful for QKD. Should be decomposed into smaller steps so that one has the possibility to chose among the various code parameters used in these schemes.
+
+** Classical error correction
+Many protocols require being able to perform classical error correction at a very fine grained level (be it for exploiting classical code properties in algorithms or to have manual control over some quantum error correction schemes using CSS codes. This entry corresponds to a sub-library providing encoding, error estimation and decoding procedures as well as code manipulation functionalities. Depending on the use of these codes (either as being used off-line or on-line) they should provide fast implementations (possibly requiring dedicated libraries or even dedicated hardware).
+
+** Quantum 1-way function
+Used in digital signature schemes and quantum cheques. This function takes a classical bit, a key and outputs a block of qubits that encode the classical bit with the help of a classical key $k$.
+
+** Secure classical broadcast channel
+Specific implementation could be required for high precision timing reasons.
+
+** Classical authenticated channel      
+Same.
+
+** Quantum anonymous transmission channel      
+Same. 
+
+** Quantum Authenticated Channel 
+Same.
+
+** Weak Coin Flipping
+Protocol per se, but used as a component in other protocols.
+
+** Verifiable Quantum Secret Sharing
+Same.
+
 
 * Task categorisation
-| Function                                                            | Layer        | Network stage           | Comments                                                         |
-|---------------------------------------------------------------------+--------------+-------------------------+------------------------------------------------------------------|
-| Sending qubit                                                       | Transport    | Trusted repeater        | Should be provided by the Transport layer                        |
-| Sending qubit blocks                                                | Transport    | Trusted repeater        | Should be provided by the Transport layer                        |
-| Teleportation protocol                                              | Transport    | Entanglement generation | Should be provided by the Transport layer                        |
-| Creation and braodcast of GHZ state                                 | Session      | Quantum memory          | Core for GHZ relying protocols (directly tap into network layer) |
-| Creation and broadcast of any stabilizer state                      | Session      | Quantum memory          | Core for GHZ relying protocols (directly tap into network layer) |
-| Creation and broadcast of arbitrary graph states                    | Session      | Quantum memory          | Core for GHZ relying protocols (directly tap into network layer) |
-| Quantum One Time Pad / confidential channel (encoding and decoding) | Presentation | Trusted repeater        | Core                                                             |
-| BB84 Encoding of classical data                                     | Presentation | Trusted repeater        | Core                                                             |
-| BB84 Decoding to classical data                                     | Presentation | Trusted repeater        | Core                                                             |
-| Single Qubit Preparation in equatorial plane (finite set of angles) | Presentation | Trusted repeater        | Core                                                             |
-| Single Qubit Measurement in equatorial plane (finite set of angles) | Presentation | Trusted repeater        | Core                                                             |
-| Multi qubit POVM                                                    | Presentation | Quantum memory          | Assess usefulness / code repetition avoidance                    |
-| Local Pauli gates                                                   | Off          | -                       | Core                                                             |
-| Local Clifford gates                                                | Off          | -                       | Core                                                             |
-| Local memory                                                        | Off          | -                       | Core                                                             |
-| Non Clifford gates                                                  | Off          | -                       | Core                                                             |
-| Verification of stabilizer state                                    | Off          | -                       | Not atomic but useful to avoid code repetition                   |
-| QFactory                                                            | Off          | -                       | Core                                                             |
-| Swap Test                                                           | Off          | -                       | Core                                                             |
-| Privacy amplification                                               | Off          | Classical               | Core if throughput is important                                  |
-| Information reconciliation                                          | Off          | Classical               | Core if throughput is important                                  |
-| Quantum 1 way function                                              | Off          | -                       | Not atomic but useful to avoid code repetition                   |
-| Secure classical broadcast channel                                  | Off          | Classical               | Core if protocol needs speed / low latency                       |
-| Classical authenticated channel                                     | Off          | Classical               | Core if protocol needs speed / low latency                       |
-| Anonymous transmission channel                                      | Session      | Quantum memory          | Not atomic but useful as building block                          |
-| Quantum Authenticated Channel                                       | Session      | Quantum memory          | Not atomic but useful as building block                          |
-| Weak Coin Flipping                                                  | Application  |                         | Not atomic but useful as building block                          |
-| (Verifiable) Quantum Secret Sharing                                 | Application  |                         | Not atomic but useful as building block                          |
+Each task is categorized in the layer model of quantum networks (ie. Physical, Layer, Network, Transport, Session, Presentation, Application or Off layer). The Network stage is also specified for each of these atomic functions (ie. in increasing complexity starting from trusted repeaters, entanglement distribution, quantum memory and quantum computing).
+
+| Function                                                            | Layer        | Network stage             | Comments                                                              |
+|---------------------------------------------------------------------+--------------+---------------------------+-----------------------------------------------------------------------|
+| Sending qubit                                                       | Transport    | Trusted repeater          | Should be provided by a Transport layer                               |
+| Sending qubit blocks                                                | Transport    | Trusted repeater          | Should be provided by a Transport layer                               |
+| Teleportation protocol                                              | Transport    | Entanglement distribution | Should be provided by a Transport layer                               |
+| Creation and braodcast of GHZ state                                 | Session      | Quantum memory            | Often core for multiparty protocols (directly tap into network layer) |
+| Creation and broadcast of any stabilizer state                      | Session      | Quantum memory            | Often core for multiparty protocols (directly tap into network layer) |
+| Creation and broadcast of arbitrary graph states                    | Session      | Quantum computing         | Often core for multiparty protocols (directly tap into network layer) |
+| Quantum One Time Pad / confidential channel (encoding and decoding) | Presentation | Trusted repeater          | Core                                                                  |
+| BB84 Encoding of classical data                                     | Presentation | Trusted repeater          | Core                                                                  |
+| BB84 Decoding to classical data                                     | Presentation | Trusted repeater          | Core                                                                  |
+| Single Qubit Preparation in equatorial plane (finite set of angles) | Presentation | Trusted repeater          | Core                                                                  |
+| Single Qubit Measurement in equatorial plane (finite set of angles) | Presentation | Trusted repeater          | Core                                                                  |
+| Multi qubit POVM                                                    | Presentation | Quantum memory            | Assess usefulness / code repetition avoidance                         |
+| Local Pauli gates                                                   | Off          | Quantum memory            | Core                                                                  |
+| Local Clifford gates                                                | Off          | Quantum memory            | Core                                                                  |
+| Local memory                                                        | Off          | Quantum memory            | Core                                                                  |
+| Non Clifford gates                                                  | Off          | Quantum computing         | Core                                                                  |
+| Verification of stabilizer state                                    | Off          | Prep. & meas. / Q. memory | Not atomic but useful to avoid code repetition                        |
+| QFactory                                                            | Off          | Quantum computing         | Core                                                                  |
+| Swap Test                                                           | Off          | Quantum memory            | Core                                                                  |
+| Privacy amplification                                               | Off          | Classical                 | Core if throughput is important                                       |
+| Information reconciliation                                          | Off          | Classical                 | Core if throughput is important                                       |
+| Secure classical broadcast channel                                  | Off          | Classical                 | Core if protocol needs speed / low latency                            |
+| Classical authenticated channel                                     | Off          | Classical                 | Core if protocol needs speed / low latency                            |
+| Quantum 1 way function                                              | Off          | Prep. & meas. / Q. memory | Not atomic but useful to avoid code repetition                        |
+| Anonymous transmission channel                                      | Session      | Quantum memory            | Not atomic but useful as building block                               |
+| Quantum Authenticated Channel                                       | Session      | Quantum memory            | Not atomic but useful as building block                               |
+| Weak Coin Flipping                                                  | Application  | Trusted repeater          | Not atomic but useful as building block                               |
+| (Verifiable) Quantum Secret Sharing                                 | Application  | Quantum memory            | Not atomic but useful as building block                               |
 
 
-* KG :noexport:
-* Software implementation recommendations :noexport:
-* Hardware integration recommendations :noexport:
+* KG                                                               :noexport:
+* Software implementation recommendations                          :noexport:
+* Hardware integration recommendations                             :noexport:
 

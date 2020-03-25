@@ -433,6 +433,160 @@ Protocol per se, but used as a component in other protocols. Implementation shal
 
 
 * KG                                                               :noexport:
+
+** Nodes
+
+| ID                                                                  | LABEL                                                               | TYPE | LAYER        | STAGE                     |
+|---------------------------------------------------------------------+---------------------------------------------------------------------+------+--------------+---------------------------|
+| Sending qubit                                                       | Sending qubit                                                       | AF   | Transport    | Trusted repeater          |
+| Sending qubit blocks                                                | Sending qubit blocks                                                | AF   | Transport    | Trusted repeater          |
+| Teleportation protocol                                              | Teleportation protocol                                              | AF   | Transport    | Entanglement distribution |
+| Creation and braodcast of GHZ state                                 | Creation and braodcast of GHZ state                                 | AF   | Session      | Quantum memory            |
+| Creation and broadcast of any stabilizer state                      | Creation and broadcast of any stabilizer state                      | AF   | Session      | Quantum memory            |
+| Creation and broadcast of arbitrary graph states                    | Creation and broadcast of arbitrary graph states                    | AF   | Session      | Quantum computing         |
+| Quantum One Time Pad / confidential channel (encoding and decoding) | Quantum One Time Pad / confidential channel (encoding and decoding) | AF   | Presentation | Trusted repeater          |
+| BB84 Encoding of classical data                                     | BB84 Encoding of classical data                                     | AF   | Presentation | Trusted repeater          |
+| BB84 Decoding to classical data                                     | BB84 Decoding to classical data                                     | AF   | Presentation | Trusted repeater          |
+| Single Qubit Preparation in equatorial plane (finite set of angles) | Single Qubit Preparation in equatorial plane (finite set of angles) | AF   | Presentation | Trusted repeater          |
+| Single Qubit Measurement in equatorial plane (finite set of angles) | Single Qubit Measurement in equatorial plane (finite set of angles) | AF   | Presentation | Trusted repeater          |
+| Multi qubit POVM                                                    | Multi qubit POVM                                                    | AF   | Presentation | Quantum memory            |
+| Local Pauli gates                                                   | Local Pauli gates                                                   | AF   | Off          | Quantum memory            |
+| Local Clifford gates                                                | Local Clifford gates                                                | AF   | Off          | Quantum memory            |
+| Local memory                                                        | Local memory                                                        | AF   | Off          | Quantum memory            |
+| Non Clifford gates                                                  | Non Clifford gates                                                  | AF   | Off          | Quantum computing         |
+| Verification of stabilizer state                                    | Verification of stabilizer state                                    | AF   | Off          | Prep. & meas.             |
+| QFactory                                                            | QFactory                                                            | AF   | Off          | Quantum computing         |
+| Swap Test                                                           | Swap Test                                                           | AF   | Off          | Quantum memory            |
+| Information reconciliation                                          | Information reconciliation                                          | AF   | Off          | Classical                 |
+| Classical error correction                                          | Classical error correction                                          | AF   | Off          | Classical                 |
+| Privacy amplification                                               | Privacy amplification                                               | AF   | Off          | Classical                 |
+| Secure classical broadcast channel                                  | Secure classical broadcast channel                                  | AF   | Off          | Classical                 |
+| Classical authenticated channel                                     | Classical authenticated channel                                     | AF   | Off          | Classical                 |
+| Quantum 1 way function                                              | Quantum 1 way function                                              | AF   | Off          | Prep. & meas.             |
+| Anonymous transmission channel                                      | Anonymous transmission channel                                      | AF   | Session      | Quantum memory            |
+| Quantum Authenticated Channel                                       | Quantum Authenticated Channel                                       | AF   | Session      | Quantum memory            |
+| Weak String Erasure                                                 | Weak String Erasure                                                 | AF   | Application  | Trusted repeater          |
+| GHZ-based Quantum Anonymous Transmission                            |                                                                     | PR   |              |                           |
+| Verifiable Quantum Anonymous Transmission                           |                                                                     | PR   |              |                           |
+| Polynomial Code based Quantum Authentication                        |                                                                     | PR   |              |                           |
+| Fast Quantum Byzantine Agreement                                    |                                                                     | PR   |              |                           |
+| Quantum Bit Commitment                                              |                                                                     | PR   |              |                           |
+| Quantum Coin Flipping                                               |                                                                     | PR   |              |                           |
+| Gottesman and Chuang Quantum Digital Signature                      |                                                                     | PR   |              |                           |
+| Prepare and Measure Quantum Digital Signature (QDS)                 |                                                                     | PR   |              |                           |
+| Measurement Device Independent QDS                                  |                                                                     | PR   |              |                           |
+| Multipartite Entanglement Verification                              |                                                                     | PR   |              |                           |
+| Quantum Fingerprinting                                              |                                                                     | PR   |              |                           |
+| BB84                                                                |                                                                     | PR   |              |                           |
+| Device Independent QKD                                              |                                                                     | PR   |              |                           |
+| Quantum Leader Election                                             |                                                                     | PR   |              |                           |
+| Quantum Cheque                                                      |                                                                     | PR   |              |                           |
+| Quantum Coin                                                        |                                                                     | PR   |              |                           |
+| Quantum Token                                                       |                                                                     | PR   |              |                           |
+| Wiesner Quantum Money                                               |                                                                     | PR   |              |                           |
+| Quantum Oblivious transfer                                          |                                                                     | PR   |              |                           |
+| Classical FHE for Quantum Circuits                                  |                                                                     | PR   |              |                           |
+| Measurement-Only Universal Blind Quantum Computation                |                                                                     | PR   |              |                           |
+| Prepare-and-Send Universal Blind Quantum Computation                |                                                                     | PR   |              |                           |
+| Pseudo-Secret Random Qubit Generator                                |                                                                     | PR   |              |                           |
+| Prepare-and-Send Verifiable Universal Blind Quantum Computation     |                                                                     | PR   |              |                           |
+| Measurement-Only Verifiable Universal Blind Quantum Computation     |                                                                     | PR   |              |                           |
+| Prepare-and-Send Verifiable Quantum Fully Homomorphic Encryption    |                                                                     | PR   |              |                           |
+| Secure Multiparty Delegated Quantum Computation                     |                                                                     | PR   |              |                           |
+| State Teleportation                                                 |                                                                     | PR   |              |                           |
+| Weak String Erasure                                                 |                                                                     | PR   |              |                           |
+| Certified Finite / Infinite Randomness Expansion                    |                                                                     | PR   |              |                           |
+
+** Edges
+
+| SOURCE                                                           | TARGET                                                                                  |
+|------------------------------------------------------------------+-----------------------------------------------------------------------------------------|
+| GHZ-based Quantum Anonymous Transmission                         | Classical authenticated channels                                                        |
+| GHZ-based Quantum Anonymous Transmission                         | GHZ creation and broadcast                                                              |
+| GHZ-based Quantum Anonymous Transmission                         | Classical collision detection protocol                                                  |
+| GHZ-based Quantum Anonymous Transmission                         | Single qubit measurement                                                                |
+| GHZ-based Quantum Anonymous Transmission                         | Single qubit Hadamard gate                                                              |
+| GHZ-based Quantum Anonymous Transmission                         | Limited memory                                                                          |
+| GHZ-based Quantum Anonymous Transmission                         | Teleportation                                                                           |
+| Verifiable Quantum Anonymous Transmission                        | Notification (private computation of classical parity, OR, Rand)                        |
+| Verifiable Quantum Anonymous Transmission                        | Single qubit measurements in the equatorial plane                                       |
+| Verifiable Quantum Anonymous Transmission                        | Imperfect GHZ source                                                                    |
+| Verifiable Quantum Anonymous Transmission                        | Limited memory                                                                          |
+| Verifiable Quantum Anonymous Transmission                        | (Uses GHZ anonymous transmission as subroutine)                                         |
+| Polynomial Code based Quantum Authentication                     | Clifford circuits (error correction)                                                    |
+| Polynomial Code based Quantum Authentication                     | Memory                                                                                  |
+| Fast Quantum Byzantine Agreement                                 | Distribution of GHZ state among n parties                                               |
+| Fast Quantum Byzantine Agreement                                 | Verification of n-party maximally entangled state                                       |
+| Fast Quantum Byzantine Agreement                                 | (Uses oblivious common coin)                                                            |
+| Fast Quantum Byzantine Agreement                                 | (Uses verifiable QSS)                                                                   |
+| Quantum Bit Commitment                                           | BB84 encoding of classical information                                                  |
+| Quantum Bit Commitment                                           | Single qubit measurement in computational and Hadamard bases                            |
+| Quantum Bit Commitment                                           | Secure classical channel                                                                |
+| Quantum Bit Commitment                                           | Fast operations to keep the relativistic constraints                                    |
+| Quantum Coin Flipping                                            | $\pi/9$ single qubit preparation                                                        |
+| Quantum Coin Flipping                                            | Multi qubit POVM                                                                        |
+| Gottesman and Chuang Quantum Digital Signature                   | Memory                                                                                  |
+| Gottesman and Chuang Quantum Digital Signature                   | Swap test                                                                               |
+| Gottesman and Chuang Quantum Digital Signature                   | Stabilizer states creation                                                              |
+| Prepare and Measure Quantum Digital Signature (QDS)              | BB84 encoding                                                                           |
+| Prepare and Measure Quantum Digital Signature (QDS)              | BB84 decoding                                                                           |
+| Measurement Device Independent QDS                               | Classical authenticated channels                                                        |
+| Measurement Device Independent QDS                               | Measurement Device Independent QKD link                                                 |
+| Measurement Device Independent QDS                               | BB8484 Encoding and Decoding                                                            |
+| Multipartite Entanglement Verification                           | Authenticated classical channels                                                        |
+| Multipartite Entanglement Verification                           | Secure classical broadcast                                                              |
+| Multipartite Entanglement Verification                           | Common shared randomness                                                                |
+| Multipartite Entanglement Verification                           | Limited memory                                                                          |
+| Multipartite Entanglement Verification                           | BB84 Measurements                                                                       |
+| Multipartite Entanglement Verification                           | GHZ source / broadcast                                                                  |
+| Quantum Fingerprinting                                           | Clifford gates                                                                          |
+| Quantum Fingerprinting                                           | Swap test                                                                               |
+| BB84                                                             | BB84 Encoding and Decoding                                                              |
+| BB84                                                             | Authenticated classical channel                                                         |
+| BB84                                                             | Privacy amplification                                                                   |
+| BB84                                                             | Information reconciliation                                                              |
+| Device Independent QKD                                           | EPR distribution                                                                        |
+| Device Independent QKD                                           | Information reconciliation                                                              |
+| Device Independent QKD                                           |                                                                                         |
+| Quantum Leader Election                                          | (Uses Weak coin flipping)                                                               |
+| Quantum Cheque                                                   | (Uses QKD)                                                                              |
+| Quantum Cheque                                                   | GHZ source                                                                              |
+| Quantum Cheque                                                   | Quantum memory                                                                          |
+| Quantum Cheque                                                   | Quantum 1-way function                                                                  |
+| Quantum Cheque                                                   | SWAP test                                                                               |
+| Quantum Coin                                                     | Clifford gates                                                                          |
+| Quantum Coin                                                     | Quantum memory                                                                          |
+| Quantum Token                                                    | BB84 Encoding and decoding                                                              |
+| Quantum Token                                                    | Quantum Memory                                                                          |
+| Wiesner Quantum Money                                            | BB84 Encoding and decoding                                                              |
+| Wiesner Quantum Money                                            | Quantum Memory                                                                          |
+| Quantum Oblivious transfer                                       | BB84 Encoding and decoding                                                              |
+| Classical FHE for Quantum Circuits                               | Full QC (server)                                                                        |
+| Measurement-Only Universal Blind Quantum Computation             | Graph state generation (C-Z, + states preparation, + quantum memory)                    |
+| Measurement-Only Universal Blind Quantum Computation             | Equatorial plane measurements                                                           |
+| Prepare-and-Send Quantum Fully Homomorphic Encryption            | Full QC (server)                                                                        |
+| Prepare-and-Send Quantum Fully Homomorphic Encryption            | Quantum OTP (client)                                                                    |
+| Prepare-and-Send Universal Blind Quantum Computation             | Graph state generation (C-Z, + states preparation, + quantum memory)                    |
+| Prepare-and-Send Universal Blind Quantum Computation             | Equatorial plane measurements                                                           |
+| Pseudo-Secret Random Qubit Generator                             | Full QC on server's side                                                                |
+| Pseudo-Secret Random Qubit Generator                             | Quantum-safe one-way functions that are 2 regular, collision resistant (Client's side)  |
+| Prepare-and-Send Verifiable Universal Blind Quantum Computation  | Graph state generation                                                                  |
+| Prepare-and-Send Verifiable Universal Blind Quantum Computation  | Equatorial plane measurement                                                            |
+| Prepare-and-Send Verifiable Universal Blind Quantum Computation  | Quantum One Time Pad                                                                    |
+| Prepare-and-Send Verifiable Universal Blind Quantum Computation  | Quantum memory (size depends on graph considered, do not need to store the whole graph) |
+| Measurement-Only Verifiable Universal Blind Quantum Computation  | Graph state generation (C-Z, + states preparation, + quantum memory)                    |
+| Measurement-Only Verifiable Universal Blind Quantum Computation  | Equatorial plane measurement                                                            |
+| Measurement-Only Verifiable Universal Blind Quantum Computation  | Quantum memory                                                                          |
+| Prepare-and-Send Verifiable Quantum Fully Homomorphic Encryption | Full QC (server)                                                                        |
+| Prepare-and-Send Verifiable Quantum Fully Homomorphic Encryption | Clifford QC (client)                                                                    |
+| Secure Multiparty Delegated Quantum Computation                  | Graph state generation                                                                  |
+| Secure Multiparty Delegated Quantum Computation                  | Verifiable secret sharing                                                               |
+| State Teleportation                                              | EPR state source and broadcasting                                                       |
+| State Teleportation                                              | Bell measurements / CNOT Hadamard and computational basis measurements                  |
+| Weak String Erasure                                              | BB84 state preparation and measurement                                                  |
+| Certified Finite / Infinite Randomness Expansion                 | CHSH Measurements                                                                       |
+| Certified Finite / Infinite Randomness Expansion                 | EPR generation between 2 measurement devices                                            |
+
 * Software implementation recommendations                          :noexport:
 * Hardware integration recommendations                             :noexport:
 

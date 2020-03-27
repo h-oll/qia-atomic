@@ -1,0 +1,57 @@
+ID,LABEL,TYPE,LAYER,STAGE
+Sending qubit,Sending qubit,AF,Transport,Prepare and measure
+Creation and braodcast of GHZ state,Creation and braodcast of GHZ state,AF,Session,Quantum memory
+Creation and broadcast of any stabilizer state,Creation and broadcast of any stabilizer state,AF,Session,Quantum memory
+Creation and broadcast of arbitrary graph states,Creation and broadcast of arbitrary graph states,AF,Session,Quantum computing
+Quantum One Time Pad / confidential channel (encoding and decoding),Quantum One Time Pad / confidential channel (encoding and decoding),AF,Presentation,Prepare and measure
+BB84 Encoding of classical data,BB84 Encoding of classical data,AF,Presentation,Prepare and measure
+BB84 Decoding to classical data,BB84 Decoding to classical data,AF,Presentation,Prepare and measure
+Single Qubit Preparation in equatorial plane (finite set of angles),Single Qubit Preparation in equatorial plane (finite set of angles),AF,Presentation,Prepare and measure
+Single Qubit Measurement in equatorial plane (finite set of angles),Single Qubit Measurement in equatorial plane (finite set of angles),AF,Presentation,Prepare and measure
+Multi qubit POVM,Multi qubit POVM,AF,Presentation,Quantum memory
+Local Clifford gates,Local Clifford gates,AF,Off,Quantum memory
+Local memory,Local memory,AF,Off,Quantum memory
+Local non Clifford gates,Local non Clifford gates,AF,Off,Quantum computing
+Verification of stabilizer state,Verification of stabilizer state,AF,Off,Prepare and measure
+QFactory,QFactory,AF,Off,Quantum computing
+Swap Test,Swap Test,AF,Off,Quantum memory
+Information reconciliation,Information reconciliation,AF,Off,Classical
+Classical error correction,Classical error correction,AF,Off,Classical
+Privacy amplification,Privacy amplification,AF,Off,Classical
+Secure classical channel,Secure classical channel,AF,Off,Classical
+Secure classical broadcast channel,Secure classical broadcast channel,AF,Off,Classical
+Classical authenticated channel,Classical authenticated channel,AF,Off,Classical
+Quantum 1 way function,Quantum 1 way function,AF,Off,Prepare and measure
+Quantum Authenticated Channel,Quantum Authenticated Channel,AF,Session,Quantum memory
+Weak String Erasure,Weak String Erasure,AF,Transport,Trusted repeater
+GHZ-based Quantum Anonymous Transmission,GHZ-based Quantum Anonymous Transmission,AF,Session,Quantum memory
+Verifiable Quantum Anonymous Transmission,Verifiable Quantum Anonymous Transmission,PR,Application,Quantum memory
+Polynomial Code based Quantum Authentication,Polynomial Code based Quantum Authentication,PR,Transport,Quantum memory
+Fast Quantum Byzantine Agreement,Fast Quantum Byzantine Agreement,PR,Application,Quantum computing
+Quantum Bit Commitment,Quantum Bit Commitment,PR,Application,Prepare and measure
+Quantum Coin Flipping,Quantum Coin Flipping,PR,Application,Quantum computing
+Gottesman and Chuang Quantum Digital Signature,Gottesman and Chuang Quantum Digital Signature,PR,Session,Quantum memory
+Prepare and Measure Quantum Digital Signature (QDS),Prepare and Measure Quantum Digital Signature (QDS),PR,Session,Prepare and measure
+Measurement Device Independent QDS,Measurement Device Independent QDS,PR,Session,Prepare and measure
+Multipartite Entanglement Verification,Multipartite Entanglement Verification,PR,Application,Quantum memory
+Quantum Fingerprinting,Quantum Fingerprinting,PR,Session,Quantum computing
+BB84,BB84,PR,Application,Prepare and measure
+Device Independent QKD,Device Independent QKD,PR,Application,Entanglement distribution
+Quantum Leader Election,Quantum Leader Election,PR,Application,Quantum computing
+Quantum Cheque,Quantum Cheque,PR,Application,Quantum memory
+Quantum Coin,Quantum Coin,PR,Application,Quantum memory
+Quantum Token,Quantum Token,PR,Application,Quantum memory
+Wiesner Quantum Money,Wiesner Quantum Money,PR,Application,Quantum memory
+Quantum Oblivious transfer,Quantum Oblivious transfer,PR,Session,Prepare and measure
+Classical FHE for Quantum Circuits,Classical FHE for Quantum Circuits,PR,Application,Quantum computing
+Measurement-Only Universal Blind Quantum Computation,Measurement-Only Universal Blind Quantum Computation,PR,Application,Quantum computing
+Prepare-and-Send Universal Blind Quantum Computation,Prepare-and-Send Universal Blind Quantum Computation,PR,Application,Quantum computing
+Pseudo-Secret Random Qubit Generator,Pseudo-Secret Random Qubit Generator,PR,Application,Quantum computing
+Prepare-and-Send Verifiable Universal Blind Quantum Computation,Prepare-and-Send Verifiable Universal Blind Quantum Computation,PR,Application,Quantum computing
+Measurement-Only Verifiable Universal Blind Quantum Computation,Measurement-Only Verifiable Universal Blind Quantum Computation,PR,Application,Quantum computing
+Prepare-and-Send Verifiable Quantum Fully Homomorphic Encryption,Prepare-and-Send Verifiable Quantum Fully Homomorphic Encryption,PR,Application,Quantum computing
+Secure Multiparty Delegated Quantum Computation,Secure Multiparty Delegated Quantum Computation,PR,Application,Quantum computing
+EPR Distribution,EPR Distribution,PR,Network,Entanglement distribution
+Quantum error correction,Quantum error correction,AF,Off,Quantum computing
+Verifiable Quantum Secret Sharing,Verifiable Quantum Secret Sharing,PR,Application,Quantum computing
+Prepare-and-Send Quantum Fully Homomorphic Encryption,Prepare-and-Send Quantum Fully Homomorphic Encryption,PR,Application,Quantum computing

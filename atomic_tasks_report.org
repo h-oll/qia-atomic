@@ -169,15 +169,15 @@ The table below presents the extracted tasks from the protocols listed above. Ea
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
 | Creation and broadcast of arbitrary graph states                    | Session      | Quantum computing         | Often core for multiparty protocols                                              |
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
-| Quantum One Time Pad / confidential channel (encoding and decoding) | Presentation | Prep. & meas.             | Core                                                                             |
+| Quantum One Time Pad / confidential channel (encoding and decoding) | Presentation | Prep. and meas.           | Core                                                                             |
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
-| BB84 Encoding of classical data                                     | Presentation | Prep. & meas.             | Core                                                                             |
+| BB84 Encoding of classical data                                     | Presentation | Prep. and meas.           | Core                                                                             |
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
-| BB84 Decoding to classical data                                     | Presentation | Prep. & meas.             | Core                                                                             |
+| BB84 Decoding to classical data                                     | Presentation | Prep. and meas.           | Core                                                                             |
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
-| Single Qubit Preparation in equatorial plane (finite set of angles) | Presentation | Prep. & meas.             | Core                                                                             |
+| Single Qubit Preparation in equatorial plane (finite set of angles) | Presentation | Prep. and meas.           | Core                                                                             |
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
-| Single Qubit Measurement in equatorial plane (finite set of angles) | Presentation | Prep. & meas.             | Core                                                                             |
+| Single Qubit Measurement in equatorial plane (finite set of angles) | Presentation | Prep. and meas.           | Core                                                                             |
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
 | Multi qubit POVM                                                    | Presentation | Quantum memory            | Assess usefulness / code repetition avoidance                                    |
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
@@ -197,13 +197,15 @@ The table below presents the extracted tasks from the protocols listed above. Ea
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
 | Classical error correction                                          | Off          | Classical                 | Core if throughput is important / not atomic but useful to avoid code repetition |
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
+| Quantum error correction                                            | Off          | Quantum computing         | Restrict to the quantum part of ECC, classical part done by CECC. Could fit in several layers
+|---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
 | Privacy amplification                                               | Off          | Classical                 | Core if throughput is important                                                  |
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
 | Secure classical broadcast channel                                  | Off          | Classical                 | Core if protocol needs speed / low latency                                       |
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
 | Classical authenticated channel                                     | Off          | Classical                 | Core if protocol needs speed / low latency                                       |
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
-| Quantum 1 way function                                              | Off          | Prep. & meas.             | Not atomic but useful to avoid code repetition                                   |
+| Quantum 1 way function                                              | Off          | Prep. and meas.           | Not atomic but useful to avoid code repetition                                   |
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
 | Anonymous transmission channel                                      | Session      | Quantum memory            | Not atomic but useful as building block                                          |
 |---------------------------------------------------------------------+--------------+---------------------------+----------------------------------------------------------------------------------|
@@ -231,7 +233,7 @@ While teleportation is the heart of the transport layer in entanglement sharing 
 
 *** Sending half
 
-#+ATTR_LATEX: :environment longtable :align p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep
+#+ATTR_LATEX: :environment longtable :align p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}
 | Inputs                                | Outputs                                                       |
 |---------------------------------------+---------------------------------------------------------------|
 | Source node: Qubit or block of Qubits | Source node: Corrections or block of corrections              |

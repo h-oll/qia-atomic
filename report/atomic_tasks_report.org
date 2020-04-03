@@ -535,7 +535,7 @@ This graph clearly shows the (degree-) centrality of BB84 encoding as well as Se
 
 Here, note that  we did not represent possible implementations of atomic tasks. Instead, atomic functions are kept /atomic/ because a single atomic function could be implemented in various ways each using different functionalities (see eg. creation and distribition of GHZ states involving broadcasting EPR pairs vs. local creation and qubit sending). Opting for one implementation against another is not the purpose of this report as flexibility should be in the hands of experimentalists in order for them to optimize the quality of the produced functionality given its input/output specification.
 
-[[./atomic.kg.png]]
+[[./_rsc/atomic.kg.png]]
 
 * Knowledge Graph data                                             :noexport:
 ** Nodes

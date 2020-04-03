@@ -1,4 +1,4 @@
-% Created 2020-03-31 Tue 09:14
+% Created 2020-04-03 Fri 14:41
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -23,7 +23,7 @@
 \usepackage{marginnote}
 \newcommand{\mn}[2]{\marginnote{\tiny \textbf{#1:} #2}}
 \usepackage[a4paper,hmargin=1in,vmargin=1.25in]{geometry}
-\date{2020-02-24}
+\date{2020-03-31}
 \title{Quantum Internet Alliance M4.2: List of atomic tasks}
 \hypersetup{
  pdfauthor={},
@@ -38,7 +38,7 @@
 
 
 \section{Purpose}
-\label{sec:orgdb88929}
+\label{sec:org083de9c}
 Application level protocols need to have access to networking services such as entanglement sharing between any two points of the network. While such service is at the heart of the quantum internet architecture, additional functionalities can be required or just convenient to have for better, faster, wider development of application level protocols. 
 
 The purpose of this report is to review a wide range of such protocols searching for atomic repeatable functions while categorising them along several dimensions. By doing so, we aim at providing building blocks that:
@@ -50,7 +50,7 @@ The purpose of this report is to review a wide range of such protocols searching
 \end{itemize}
 
 \section{Methodology}
-\label{sec:orgd48be91}
+\label{sec:org6117fdc}
 \begin{enumerate}
 \item Review of the quantum protocol zoo looking at the various protocols;
 \item Identify and group candidate atomic functions;
@@ -59,7 +59,7 @@ The purpose of this report is to review a wide range of such protocols searching
 \end{enumerate}
 
 \section{Review of the quantum protocol zoo}
-\label{sec:org6212082}
+\label{sec:org396a9d2}
 
 \begin{longtable}{p{.4\linewidth-2\tabcolsep}|p{.6\linewidth-2\tabcolsep}}
 Protocol & Functionalities used\\
@@ -198,7 +198,7 @@ Weak String Erasure & BB84 Encoding of classical data\\
 \end{longtable}
 
 \section{Task extraction and categorisation}
-\label{sec:orgf2a8da6}
+\label{sec:orge4548e6}
 The table below presents the extracted tasks from the protocols listed above. Each task is categorized in the layer model of quantum networks (ie. Physical, Layer, Network, Transport, Session, Presentation, Application or Off layer). The Network stage is also specified for each of these atomic functions (ie. in increasing complexity starting from trusted repeaters, entanglement distribution, quantum memory and quantum computing).
 
 \begin{longtable}{p{.35\linewidth-2\tabcolsep}|p{.17\linewidth-2\tabcolsep}|p{.23\linewidth-2\tabcolsep}|p{.25\linewidth-2\tabcolsep}}
@@ -273,9 +273,9 @@ Weak String Erasure & Transport & Trusted repeater & Not atomic but useful as bu
 \end{longtable}
 
 \section{Tasks specifications}
-\label{sec:org6ac3ef8}
+\label{sec:org1fbb4f3}
 \subsection{Sending qubit}
-\label{sec:org606c2fe}
+\label{sec:orgdbb7f63}
 This functionality should be provided at the transport layer for entanglement sharing networks. It would be at the link layer for networks based on direct transmission of quantum informaton (QKD-like networks).
 
 For a transport layer functionality, it is expected to provide reliable service with flow control (allowing the sender to improve its probability of correct transmission by detecting possible congestion at the receiving end or along the way). 
@@ -301,12 +301,11 @@ Source node: Metadata & Target node: Qubit ID or Qubits ID block, Source node ID
 \end{longtable}
 
 \subsection{Teleportation halves}
-\label{sec:org521d423}
+\label{sec:org2c1c660}
 While teleportation is the heart of the transport layer in entanglement sharing networks, it is useful to have each half of the protocol available directly to the programmer as a way to teleport while quantum one time padding information. This is especially useful in measurement based quantum computation for blindness and verification. In this case, teleportation measurement is performed, but the sender does not send the corrections to the receiver.
 
-
 \subsubsection{Sending half}
-\label{sec:orgfc6ba90}
+\label{sec:orge14f78b}
 
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
@@ -331,7 +330,7 @@ Source node: Qubit or block of Qubits & Source node: Corrections or block of cor
 Correction sending and metadata sending is left up to the Source node as protocols might require a full flexibility over what is sent (or not sent). 
 
 \subsubsection{Receiving half}
-\label{sec:orgb153ad0}
+\label{sec:orgb34e897}
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
 \hline
@@ -353,7 +352,7 @@ Target node: Corrections or block of corrections & Target node: Corrected Qubit 
 The receiving half can be replaced by a quantum One-Time-Pad encoding / decoding with a proper labelling of the corrections.
 
 \subsection{Creation and braodcast of GHZ state}
-\label{sec:org89da0b8}
+\label{sec:org3de7b0b}
 GHZ states are central to several multi-party protocols. Several implementations can be proposed:
 \begin{itemize}
 \item either a centralized create and broadcast operation using a regular transport layer,
@@ -363,7 +362,7 @@ GHZ states are central to several multi-party protocols. Several implementations
 The first option would yield two atomic sub-tasks, while the latter would involve a protocol on its own.
 
 \subsubsection{Local prepare}
-\label{sec:org02e007f}
+\label{sec:org1106790}
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
 \hline
@@ -383,7 +382,7 @@ Number of parties & N-Party GHZ state\\
 \end{longtable}
 
 \subsubsection{Broadcast}
-\label{sec:org6ad076b}
+\label{sec:org7550d2a}
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
 \hline
@@ -406,15 +405,15 @@ Source node: Overall state metadata & \\
 \end{longtable}
 
 \subsection{Creation and broadcast of any stabilizer state}
-\label{sec:orgd095bf6}
+\label{sec:org0ff1706}
 Specifications similar to GHZ state creation and broadcast.
 
 \subsection{Creation and broadcast of arbitrary graph states}
-\label{sec:orga339a6e}
+\label{sec:org14163c6}
 Specifications similar to GHZ state creation and broadcast.
 
 \subsection{Quantum One Time Pad / confidential channel (encoding and decoding)}
-\label{sec:orgea17906}
+\label{sec:org91dbe2b}
 Encoding and decoding are identical, yielding a single atomic task that is entirely performed locally. The "send" part can be performed using the send qubit atomic function and would yield a confidential quantum channel. It can also be implemented directly via teleportation without revealing the corrections.
 
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
@@ -437,7 +436,7 @@ Block of encoding key (ie 2 bits per qubit specifying X and Z rotations) & \\
 \end{longtable}
 
 \subsection{BB84 Encoding of classical data}
-\label{sec:orgc74e694}
+\label{sec:org541e6cf}
 One of the most useful encoding, it is used in many protocols and is also helpful in unit-testing the library itself. This would be naturally embedded in a slightly more general preparation functionality where all 6 states that are eigenstates of Pauli operators can be prepared at will.
 
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
@@ -460,7 +459,7 @@ Block of encoding bases & \\
 \end{longtable}
 
 \subsection{BB84 Decoding to classical data}
-\label{sec:orgac8a2d4}
+\label{sec:org826fd70}
 Same reason. Symmetric functionality.
 
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
@@ -483,7 +482,7 @@ Block of encoding bases & \\
 \end{longtable}
 
 \subsection{Single Qubit Preparation in equatorial plane (finite set of angles)}
-\label{sec:org5c79d59}
+\label{sec:orge4827df}
 Useful in the context of measurement based quantum computing. A natural set of preparation angles is \(\{\frac{k\pi}{4}\}_{0\leq k \leq 7}\) as it is widely used in measurement based quantum computing schemes. Other angles could be optionally considered. 
 
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
@@ -507,7 +506,7 @@ Option: list of preparation angles, defaults to \(k\pi/4\) & \\
 \end{longtable}
 
 \subsection{Single Qubit Measurement in equatorial plane (finite set of angles)}
-\label{sec:org8de6310}
+\label{sec:org1622a3e}
 Same reason. Symmetric functionality.
 
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
@@ -530,7 +529,7 @@ Option: list of measurement angles, defaults to \(k\pi/4\) & \\
 \end{longtable}
 
 \subsection{Multi qubit POVM}
-\label{sec:org4e29bf8}
+\label{sec:org4811dac}
 While it is not possible to allow the implementation of generic POVM's even on a few qubits, some should be available readily as atomic functions. A possibility would be to allow for POVM's obtained as observables defined by stabilizer measurements as it would allow completing basic quantum error correcting schemes.
 
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
@@ -553,7 +552,7 @@ Length-N Pauli operator \(P\) & \\
 \end{longtable}
 
 \subsection{Local Pauli gates}
-\label{sec:org3496fa5}
+\label{sec:orgc241dd1}
 Necessary. Mostly provided by the backend it self.
 
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
@@ -576,15 +575,15 @@ Pauli operator & \\
 \end{longtable}
 
 \subsection{Local Clifford gates}
-\label{sec:org08ac535}
+\label{sec:org8a02c9a}
 Same as previous functionality.
 
 \subsection{Local non Clifford gates}
-\label{sec:orgd1bd152}
+\label{sec:org9ae964a}
 Most backends or hardware provide the ability to perform \(T\) gates. These will serve as building blocks for distillation schemes before being used in real circuits. Same specification as the previous functionality.
 
 \subsection{Local memory manager}
-\label{sec:org6165cb9}
+\label{sec:orgee258d0}
 The idea behind this functionality is to be able to handle various scenario influencing the robustness of protocols, such as being able to tell neighboring nodes that the capacity to accept new qubits is low before they actually send information. It might also be interesting to be able to keep track of the time to live of various qubits so that other parts of the protocols can take that into account and give higher priority to operations with a lower TTL. 
 
 The implementation of such functionality can be done in various ways and will highly depend on the backend and chosen architecture.
@@ -609,11 +608,11 @@ nil & Available capacity for reciving or creating new qubits\\
 \end{longtable}
 
 \subsection{Multi-site verification of stabilizer state}
-\label{sec:org02069c6}
+\label{sec:org8e7bd89}
 This allows verified multiparty protocols. It also enters into unit testing for multi-party operations.
 
 \subsubsection{Verifier side}
-\label{sec:org375712f}
+\label{sec:orga8f34b5}
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
 \hline
@@ -635,7 +634,7 @@ Stabilizer state description & \\
 \end{longtable}
 
 \subsubsection{Prover side}
-\label{sec:orgb56c09d}
+\label{sec:org1751731}
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
 \hline
@@ -656,7 +655,7 @@ List of measurements to perform & \\
 \end{longtable}
 
 \subsection{QFactory}
-\label{sec:orga6a1a9b}
+\label{sec:org66ad29f}
 Blind remote preparation of a classical described quantum state.
 
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
@@ -679,7 +678,7 @@ Client node: classical description of the quantum state & Server node: quantum s
 \end{longtable}
 
 \subsection{Swap Test}
-\label{sec:org75f3e30}
+\label{sec:org8245257}
 Implies to add the swap gate first and then the test. It should work indistinctively for individual qubits and blocks of qubits. The returned classical bit corresponds to a single measurement outcome (ie the test needs to be repeated to get the overlap value between the two tested-states).
 
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
@@ -701,7 +700,7 @@ Inputs & Outputs \\
 \end{longtable}
 
 \subsection{Information reconciliation}
-\label{sec:org7af42eb}
+\label{sec:orgb9295de}
 Useful for implementations of QKD like protocols. Would offer a template for reconciliation allowing to plugin various error correction schemes.
 
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
@@ -729,10 +728,10 @@ The parameters would specify:
 \end{itemize}
 
 \subsection{Classical error correction}
-\label{sec:org409ca8b}
+\label{sec:org5e48244}
 Many protocols require classical error correction at a very fine grained level (be it for exploiting classical code properties in algorithms or to have manual control over some quantum error correction schemes using CSS codes). This entry would be consisting of a sub-library providing encoding, error estimation and decoding procedures as well as code manipulation functionalities. Depending on the use of these codes (either as being used off-line or on-line) they should provide fast implementations (possibly requiring dedicated libraries or even dedicated hardware).
 \subsubsection{Classical information encoding}
-\label{sec:orgcd1addd}
+\label{sec:orgf794861}
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
 \hline
@@ -753,7 +752,7 @@ Length-\(k\) classical bits & \\
 \end{longtable}
 
 \subsubsection{Classical information error estimation and decoding}
-\label{sec:org22c6fbc}
+\label{sec:org4bbbb07}
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
 \hline
@@ -782,7 +781,7 @@ Additionnal information passed would comprise:
 \item Error estimation strategy
 \end{itemize}
 \subsubsection{Classical codes manipulation}
-\label{sec:orgfa130bf}
+\label{sec:org495659d}
 Series of functions such as:
 \begin{itemize}
 \item Coset sampling
@@ -793,11 +792,10 @@ Series of functions such as:
 
 These functions might be provided by specialized libraries.
 
-
 \subsection{Quantum error correction}
-\label{sec:org0f88d1c}
+\label{sec:orga6cc004}
 \subsubsection{Encoding of quantum information}
-\label{sec:org6c24b52}
+\label{sec:org1db55e9}
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
 \hline
@@ -818,7 +816,7 @@ Length-\(k\) qubit block & \\
 \end{longtable}
 
 \subsubsection{Stabilizer measurement}
-\label{sec:orgcee2039}
+\label{sec:org48a5118}
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
 \hline
@@ -839,7 +837,7 @@ Length-\(n\) qubit block & \\
 \end{longtable}
 
 \subsubsection{Application of error corrections}
-\label{sec:org24ea528}
+\label{sec:orga10178b}
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
 \hline
@@ -860,7 +858,7 @@ Length-\(n\) vector of Pauli operators & \\
 \end{longtable}
 
 \subsubsection{Transversal logical gates application}
-\label{sec:orgf9606ad}
+\label{sec:orge028dfc}
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
 \hline
@@ -882,7 +880,7 @@ Description of 1 or 2 logical qubit blocks & 1 ou 2 logical qubits blocks\\
 \end{longtable}
 
 \subsubsection{Logical computational basis measurement}
-\label{sec:orgc4d9030}
+\label{sec:orgf55b0e0}
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
 \hline
@@ -903,7 +901,7 @@ Logical qubit to measure & \\
 \end{longtable}
 
 \subsubsection{Decoding of quantum information}
-\label{sec:orgb3f48b4}
+\label{sec:org91dfd67}
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
 Inputs & Outputs\\
 \hline
@@ -927,7 +925,7 @@ Length-\(n\) encoded qubit block & \\
 NB: Here we have made the choice to rely on classical error correction procedure for estimating the most likely error given a noise model. This can be done because quantum codes are classical codes over \(GF(4)\).
 
 \subsection{Privacy amplification}
-\label{sec:org154d4db}
+\label{sec:org3b57563}
 Useful for implementations of QKD protocols. Would offer various schemes for privacy amplification 
 
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
@@ -955,13 +953,13 @@ The scheme would take the following parameters:
 \end{itemize}
 
 \subsection{Quantum 1-way function}
-\label{sec:org66f3955}
+\label{sec:org80eaec1}
 Used in digital signature schemes and quantum cheques. This function takes a classical bit, a key and outputs a block of qubits that encode the classical bit with the help of a classical key \(k\).
 
 The inputs/outputs is defined in a way similar to the BB84 encoding / equatorial plane encoding
 
 \subsection{Channels}
-\label{sec:orgc21ede7}
+\label{sec:orge1d1c11}
 Various implementation of quantum and classical channels will be useful as it is common in protocols to require one or several of these. Their precise specification will be depending on the network available to implement them. One constraint needs to be kept in mind: most implementations will be required to have low latency as, even for the case of classical information, it might otherwise mean that qubits containing precious quantum information are at risk of decoherence. 
 
 The Flow control and Congestion control messages available for sending qubits and blocks of qubits will need to be adapted to theses channels.
@@ -976,7 +974,7 @@ List of channels to implement:
 \end{itemize}
 
 \subsection{Weak String Erasure}
-\label{sec:org4b033a5}
+\label{sec:org7a2b397}
 This protocol can be seen as a purposedly imperfect transport protocol. It is thus categorized in the transport layer and should have flow control and congestion control mechanisms.
 
 \begin{longtable}{p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}}
@@ -1000,7 +998,7 @@ Target node: length-N bit string of basis choices & \\
 \end{longtable}
 
 \section{Knowledge graph representation of relations between atomic functions and protocols of the zoo}
-\label{sec:orgf0b8d86}
+\label{sec:orgde14c25}
 
 The knowledge graph presented below contains the various protocols and atomic functions extract from the quantum protocol zoo. The larger nodes are atomic functions, while smaller ones correspond to application level protocols. The color of the nodes correspond to the network stage of the task: 
 \begin{itemize}

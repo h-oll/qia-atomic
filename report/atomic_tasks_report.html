@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-31 Tue 09:14 -->
+<!-- 2020-04-03 Fri 14:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Quantum Internet Alliance M4.2: List of atomic tasks</title>
@@ -266,8 +266,8 @@ for the JavaScript code in this tag.
 <h1 class="title">Quantum Internet Alliance M4.2: List of atomic tasks</h1>
 
 
-<div id="outline-container-org0c6bcfa" class="outline-2">
-<h2 id="org0c6bcfa"><span class="section-number-2">1</span> Purpose</h2>
+<div id="outline-container-orge76dde7" class="outline-2">
+<h2 id="orge76dde7"><span class="section-number-2">1</span> Purpose</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Application level protocols need to have access to networking services such as entanglement sharing between any two points of the network. While such service is at the heart of the quantum internet architecture, additional functionalities can be required or just convenient to have for better, faster, wider development of application level protocols. 
@@ -285,8 +285,8 @@ The purpose of this report is to review a wide range of such protocols searching
 </div>
 </div>
 
-<div id="outline-container-orgb9d2e82" class="outline-2">
-<h2 id="orgb9d2e82"><span class="section-number-2">2</span> Methodology</h2>
+<div id="outline-container-org9e44446" class="outline-2">
+<h2 id="org9e44446"><span class="section-number-2">2</span> Methodology</h2>
 <div class="outline-text-2" id="text-2">
 <ol class="org-ol">
 <li>Review of the quantum protocol zoo looking at the various protocols;</li>
@@ -297,8 +297,8 @@ The purpose of this report is to review a wide range of such protocols searching
 </div>
 </div>
 
-<div id="outline-container-org440b11a" class="outline-2">
-<h2 id="org440b11a"><span class="section-number-2">3</span> Review of the quantum protocol zoo</h2>
+<div id="outline-container-org46bad59" class="outline-2">
+<h2 id="org46bad59"><span class="section-number-2">3</span> Review of the quantum protocol zoo</h2>
 <div class="outline-text-2" id="text-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -798,8 +798,8 @@ The purpose of this report is to review a wide range of such protocols searching
 </div>
 </div>
 
-<div id="outline-container-org01d6058" class="outline-2">
-<h2 id="org01d6058"><span class="section-number-2">4</span> Task extraction and categorisation</h2>
+<div id="outline-container-org153a6f0" class="outline-2">
+<h2 id="org153a6f0"><span class="section-number-2">4</span> Task extraction and categorisation</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 The table below presents the extracted tasks from the protocols listed above. Each task is categorized in the layer model of quantum networks (ie. Physical, Layer, Network, Transport, Session, Presentation, Application or Off layer). The Network stage is also specified for each of these atomic functions (ie. in increasing complexity starting from trusted repeaters, entanglement distribution, quantum memory and quantum computing).
@@ -1045,12 +1045,12 @@ The table below presents the extracted tasks from the protocols listed above. Ea
 </div>
 </div>
 
-<div id="outline-container-orge62fb6a" class="outline-2">
-<h2 id="orge62fb6a"><span class="section-number-2">5</span> Tasks specifications</h2>
+<div id="outline-container-org82404a0" class="outline-2">
+<h2 id="org82404a0"><span class="section-number-2">5</span> Tasks specifications</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgd64d191" class="outline-3">
-<h3 id="orgd64d191"><span class="section-number-3">5.1</span> Sending qubit</h3>
+<div id="outline-container-orgc6ec86d" class="outline-3">
+<h3 id="orgc6ec86d"><span class="section-number-3">5.1</span> Sending qubit</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 This functionality should be provided at the transport layer for entanglement sharing networks. It would be at the link layer for networks based on direct transmission of quantum informaton (QKD-like networks).
@@ -1094,17 +1094,15 @@ For a transport layer functionality, it is expected to provide reliable service 
 </div>
 </div>
 
-<div id="outline-container-org72e5755" class="outline-3">
-<h3 id="org72e5755"><span class="section-number-3">5.2</span> Teleportation halves</h3>
+<div id="outline-container-orgb59f645" class="outline-3">
+<h3 id="orgb59f645"><span class="section-number-3">5.2</span> Teleportation halves</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 While teleportation is the heart of the transport layer in entanglement sharing networks, it is useful to have each half of the protocol available directly to the programmer as a way to teleport while quantum one time padding information. This is especially useful in measurement based quantum computation for blindness and verification. In this case, teleportation measurement is performed, but the sender does not send the corrections to the receiver.
 </p>
 </div>
-
-
-<div id="outline-container-org661720d" class="outline-4">
-<h4 id="org661720d"><span class="section-number-4">5.2.1</span> Sending half</h4>
+<div id="outline-container-orgc5c6ef7" class="outline-4">
+<h4 id="orgc5c6ef7"><span class="section-number-4">5.2.1</span> Sending half</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1140,8 +1138,8 @@ Correction sending and metadata sending is left up to the Source node as protoco
 </div>
 </div>
 
-<div id="outline-container-org474eac6" class="outline-4">
-<h4 id="org474eac6"><span class="section-number-4">5.2.2</span> Receiving half</h4>
+<div id="outline-container-org68f6fd8" class="outline-4">
+<h4 id="org68f6fd8"><span class="section-number-4">5.2.2</span> Receiving half</h4>
 <div class="outline-text-4" id="text-5-2-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1172,8 +1170,8 @@ The receiving half can be replaced by a quantum One-Time-Pad encoding / decoding
 </div>
 </div>
 
-<div id="outline-container-org37059b0" class="outline-3">
-<h3 id="org37059b0"><span class="section-number-3">5.3</span> Creation and braodcast of GHZ state</h3>
+<div id="outline-container-org09bc7fe" class="outline-3">
+<h3 id="org09bc7fe"><span class="section-number-3">5.3</span> Creation and braodcast of GHZ state</h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
 GHZ states are central to several multi-party protocols. Several implementations can be proposed:
@@ -1188,8 +1186,8 @@ The first option would yield two atomic sub-tasks, while the latter would involv
 </p>
 </div>
 
-<div id="outline-container-org9d078f0" class="outline-4">
-<h4 id="org9d078f0"><span class="section-number-4">5.3.1</span> Local prepare</h4>
+<div id="outline-container-org5609b26" class="outline-4">
+<h4 id="org5609b26"><span class="section-number-4">5.3.1</span> Local prepare</h4>
 <div class="outline-text-4" id="text-5-3-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1215,8 +1213,8 @@ The first option would yield two atomic sub-tasks, while the latter would involv
 </div>
 </div>
 
-<div id="outline-container-org69124e4" class="outline-4">
-<h4 id="org69124e4"><span class="section-number-4">5.3.2</span> Broadcast</h4>
+<div id="outline-container-org8e6f8a6" class="outline-4">
+<h4 id="org8e6f8a6"><span class="section-number-4">5.3.2</span> Broadcast</h4>
 <div class="outline-text-4" id="text-5-3-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1258,8 +1256,8 @@ The first option would yield two atomic sub-tasks, while the latter would involv
 </div>
 </div>
 
-<div id="outline-container-orga499037" class="outline-3">
-<h3 id="orga499037"><span class="section-number-3">5.4</span> Creation and broadcast of any stabilizer state</h3>
+<div id="outline-container-org336e3d3" class="outline-3">
+<h3 id="org336e3d3"><span class="section-number-3">5.4</span> Creation and broadcast of any stabilizer state</h3>
 <div class="outline-text-3" id="text-5-4">
 <p>
 Specifications similar to GHZ state creation and broadcast.
@@ -1267,8 +1265,8 @@ Specifications similar to GHZ state creation and broadcast.
 </div>
 </div>
 
-<div id="outline-container-org4d46b0f" class="outline-3">
-<h3 id="org4d46b0f"><span class="section-number-3">5.5</span> Creation and broadcast of arbitrary graph states</h3>
+<div id="outline-container-org0dff72d" class="outline-3">
+<h3 id="org0dff72d"><span class="section-number-3">5.5</span> Creation and broadcast of arbitrary graph states</h3>
 <div class="outline-text-3" id="text-5-5">
 <p>
 Specifications similar to GHZ state creation and broadcast.
@@ -1276,8 +1274,8 @@ Specifications similar to GHZ state creation and broadcast.
 </div>
 </div>
 
-<div id="outline-container-org110a34d" class="outline-3">
-<h3 id="org110a34d"><span class="section-number-3">5.6</span> Quantum One Time Pad / confidential channel (encoding and decoding)</h3>
+<div id="outline-container-org732e651" class="outline-3">
+<h3 id="org732e651"><span class="section-number-3">5.6</span> Quantum One Time Pad / confidential channel (encoding and decoding)</h3>
 <div class="outline-text-3" id="text-5-6">
 <p>
 Encoding and decoding are identical, yielding a single atomic task that is entirely performed locally. The "send" part can be performed using the send qubit atomic function and would yield a confidential quantum channel. It can also be implemented directly via teleportation without revealing the corrections.
@@ -1312,8 +1310,8 @@ Encoding and decoding are identical, yielding a single atomic task that is entir
 </div>
 </div>
 
-<div id="outline-container-orgd7a3b1a" class="outline-3">
-<h3 id="orgd7a3b1a"><span class="section-number-3">5.7</span> BB84 Encoding of classical data</h3>
+<div id="outline-container-org30acd7e" class="outline-3">
+<h3 id="org30acd7e"><span class="section-number-3">5.7</span> BB84 Encoding of classical data</h3>
 <div class="outline-text-3" id="text-5-7">
 <p>
 One of the most useful encoding, it is used in many protocols and is also helpful in unit-testing the library itself. This would be naturally embedded in a slightly more general preparation functionality where all 6 states that are eigenstates of Pauli operators can be prepared at will.
@@ -1348,8 +1346,8 @@ One of the most useful encoding, it is used in many protocols and is also helpfu
 </div>
 </div>
 
-<div id="outline-container-orgd43e271" class="outline-3">
-<h3 id="orgd43e271"><span class="section-number-3">5.8</span> BB84 Decoding to classical data</h3>
+<div id="outline-container-org91bad5e" class="outline-3">
+<h3 id="org91bad5e"><span class="section-number-3">5.8</span> BB84 Decoding to classical data</h3>
 <div class="outline-text-3" id="text-5-8">
 <p>
 Same reason. Symmetric functionality.
@@ -1384,8 +1382,8 @@ Same reason. Symmetric functionality.
 </div>
 </div>
 
-<div id="outline-container-orgcf892f0" class="outline-3">
-<h3 id="orgcf892f0"><span class="section-number-3">5.9</span> Single Qubit Preparation in equatorial plane (finite set of angles)</h3>
+<div id="outline-container-orgb8f80e6" class="outline-3">
+<h3 id="orgb8f80e6"><span class="section-number-3">5.9</span> Single Qubit Preparation in equatorial plane (finite set of angles)</h3>
 <div class="outline-text-3" id="text-5-9">
 <p>
 Useful in the context of measurement based quantum computing. A natural set of preparation angles is \(\{\frac{k\pi}{4}\}_{0\leq k \leq 7}\) as it is widely used in measurement based quantum computing schemes. Other angles could be optionally considered. 
@@ -1425,8 +1423,8 @@ Useful in the context of measurement based quantum computing. A natural set of p
 </div>
 </div>
 
-<div id="outline-container-orgdd2b6f9" class="outline-3">
-<h3 id="orgdd2b6f9"><span class="section-number-3">5.10</span> Single Qubit Measurement in equatorial plane (finite set of angles)</h3>
+<div id="outline-container-org14174d3" class="outline-3">
+<h3 id="org14174d3"><span class="section-number-3">5.10</span> Single Qubit Measurement in equatorial plane (finite set of angles)</h3>
 <div class="outline-text-3" id="text-5-10">
 <p>
 Same reason. Symmetric functionality.
@@ -1461,8 +1459,8 @@ Same reason. Symmetric functionality.
 </div>
 </div>
 
-<div id="outline-container-org7f08e8a" class="outline-3">
-<h3 id="org7f08e8a"><span class="section-number-3">5.11</span> Multi qubit POVM</h3>
+<div id="outline-container-orgfafcba4" class="outline-3">
+<h3 id="orgfafcba4"><span class="section-number-3">5.11</span> Multi qubit POVM</h3>
 <div class="outline-text-3" id="text-5-11">
 <p>
 While it is not possible to allow the implementation of generic POVM's even on a few qubits, some should be available readily as atomic functions. A possibility would be to allow for POVM's obtained as observables defined by stabilizer measurements as it would allow completing basic quantum error correcting schemes.
@@ -1497,8 +1495,8 @@ While it is not possible to allow the implementation of generic POVM's even on a
 </div>
 </div>
 
-<div id="outline-container-orgd01145b" class="outline-3">
-<h3 id="orgd01145b"><span class="section-number-3">5.12</span> Local Pauli gates</h3>
+<div id="outline-container-org7d48aea" class="outline-3">
+<h3 id="org7d48aea"><span class="section-number-3">5.12</span> Local Pauli gates</h3>
 <div class="outline-text-3" id="text-5-12">
 <p>
 Necessary. Mostly provided by the backend it self.
@@ -1533,8 +1531,8 @@ Necessary. Mostly provided by the backend it self.
 </div>
 </div>
 
-<div id="outline-container-org1f455c2" class="outline-3">
-<h3 id="org1f455c2"><span class="section-number-3">5.13</span> Local Clifford gates</h3>
+<div id="outline-container-org8ac6d7f" class="outline-3">
+<h3 id="org8ac6d7f"><span class="section-number-3">5.13</span> Local Clifford gates</h3>
 <div class="outline-text-3" id="text-5-13">
 <p>
 Same as previous functionality.
@@ -1542,8 +1540,8 @@ Same as previous functionality.
 </div>
 </div>
 
-<div id="outline-container-org6bef967" class="outline-3">
-<h3 id="org6bef967"><span class="section-number-3">5.14</span> Local non Clifford gates</h3>
+<div id="outline-container-org16ec2e0" class="outline-3">
+<h3 id="org16ec2e0"><span class="section-number-3">5.14</span> Local non Clifford gates</h3>
 <div class="outline-text-3" id="text-5-14">
 <p>
 Most backends or hardware provide the ability to perform \(T\) gates. These will serve as building blocks for distillation schemes before being used in real circuits. Same specification as the previous functionality.
@@ -1551,8 +1549,8 @@ Most backends or hardware provide the ability to perform \(T\) gates. These will
 </div>
 </div>
 
-<div id="outline-container-org12a940d" class="outline-3">
-<h3 id="org12a940d"><span class="section-number-3">5.15</span> Local memory manager</h3>
+<div id="outline-container-orgff121ee" class="outline-3">
+<h3 id="orgff121ee"><span class="section-number-3">5.15</span> Local memory manager</h3>
 <div class="outline-text-3" id="text-5-15">
 <p>
 The idea behind this functionality is to be able to handle various scenario influencing the robustness of protocols, such as being able to tell neighboring nodes that the capacity to accept new qubits is low before they actually send information. It might also be interesting to be able to keep track of the time to live of various qubits so that other parts of the protocols can take that into account and give higher priority to operations with a lower TTL. 
@@ -1591,16 +1589,16 @@ The implementation of such functionality can be done in various ways and will hi
 </div>
 </div>
 
-<div id="outline-container-org4a0c571" class="outline-3">
-<h3 id="org4a0c571"><span class="section-number-3">5.16</span> Multi-site verification of stabilizer state</h3>
+<div id="outline-container-org1054a2f" class="outline-3">
+<h3 id="org1054a2f"><span class="section-number-3">5.16</span> Multi-site verification of stabilizer state</h3>
 <div class="outline-text-3" id="text-5-16">
 <p>
 This allows verified multiparty protocols. It also enters into unit testing for multi-party operations.
 </p>
 </div>
 
-<div id="outline-container-orgb839912" class="outline-4">
-<h4 id="orgb839912"><span class="section-number-4">5.16.1</span> Verifier side</h4>
+<div id="outline-container-org4b4302b" class="outline-4">
+<h4 id="org4b4302b"><span class="section-number-4">5.16.1</span> Verifier side</h4>
 <div class="outline-text-4" id="text-5-16-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1636,8 +1634,8 @@ This allows verified multiparty protocols. It also enters into unit testing for 
 </div>
 </div>
 
-<div id="outline-container-org33e5be2" class="outline-4">
-<h4 id="org33e5be2"><span class="section-number-4">5.16.2</span> Prover side</h4>
+<div id="outline-container-org541f5a2" class="outline-4">
+<h4 id="org541f5a2"><span class="section-number-4">5.16.2</span> Prover side</h4>
 <div class="outline-text-4" id="text-5-16-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1669,8 +1667,8 @@ This allows verified multiparty protocols. It also enters into unit testing for 
 </div>
 </div>
 
-<div id="outline-container-org6e28cad" class="outline-3">
-<h3 id="org6e28cad"><span class="section-number-3">5.17</span> QFactory</h3>
+<div id="outline-container-orgccaf766" class="outline-3">
+<h3 id="orgccaf766"><span class="section-number-3">5.17</span> QFactory</h3>
 <div class="outline-text-3" id="text-5-17">
 <p>
 Blind remote preparation of a classical described quantum state.
@@ -1705,8 +1703,8 @@ Blind remote preparation of a classical described quantum state.
 </div>
 </div>
 
-<div id="outline-container-org3e709e5" class="outline-3">
-<h3 id="org3e709e5"><span class="section-number-3">5.18</span> Swap Test</h3>
+<div id="outline-container-org217e1c8" class="outline-3">
+<h3 id="org217e1c8"><span class="section-number-3">5.18</span> Swap Test</h3>
 <div class="outline-text-3" id="text-5-18">
 <p>
 Implies to add the swap gate first and then the test. It should work indistinctively for individual qubits and blocks of qubits. The returned classical bit corresponds to a single measurement outcome (ie the test needs to be repeated to get the overlap value between the two tested-states).
@@ -1736,8 +1734,8 @@ Implies to add the swap gate first and then the test. It should work indistincti
 </div>
 </div>
 
-<div id="outline-container-org05c7d57" class="outline-3">
-<h3 id="org05c7d57"><span class="section-number-3">5.19</span> Information reconciliation</h3>
+<div id="outline-container-org5c0f17f" class="outline-3">
+<h3 id="org5c0f17f"><span class="section-number-3">5.19</span> Information reconciliation</h3>
 <div class="outline-text-3" id="text-5-19">
 <p>
 Useful for implementations of QKD like protocols. Would offer a template for reconciliation allowing to plugin various error correction schemes.
@@ -1775,15 +1773,15 @@ The parameters would specify:
 </div>
 </div>
 
-<div id="outline-container-orga1493ad" class="outline-3">
-<h3 id="orga1493ad"><span class="section-number-3">5.20</span> Classical error correction</h3>
+<div id="outline-container-org43b60b1" class="outline-3">
+<h3 id="org43b60b1"><span class="section-number-3">5.20</span> Classical error correction</h3>
 <div class="outline-text-3" id="text-5-20">
 <p>
 Many protocols require classical error correction at a very fine grained level (be it for exploiting classical code properties in algorithms or to have manual control over some quantum error correction schemes using CSS codes). This entry would be consisting of a sub-library providing encoding, error estimation and decoding procedures as well as code manipulation functionalities. Depending on the use of these codes (either as being used off-line or on-line) they should provide fast implementations (possibly requiring dedicated libraries or even dedicated hardware).
 </p>
 </div>
-<div id="outline-container-orgb161332" class="outline-4">
-<h4 id="orgb161332"><span class="section-number-4">5.20.1</span> Classical information encoding</h4>
+<div id="outline-container-orga84b3e1" class="outline-4">
+<h4 id="orga84b3e1"><span class="section-number-4">5.20.1</span> Classical information encoding</h4>
 <div class="outline-text-4" id="text-5-20-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1814,8 +1812,8 @@ Many protocols require classical error correction at a very fine grained level (
 </div>
 </div>
 
-<div id="outline-container-orgc0d2f4f" class="outline-4">
-<h4 id="orgc0d2f4f"><span class="section-number-4">5.20.2</span> Classical information error estimation and decoding</h4>
+<div id="outline-container-org9776b94" class="outline-4">
+<h4 id="org9776b94"><span class="section-number-4">5.20.2</span> Classical information error estimation and decoding</h4>
 <div class="outline-text-4" id="text-5-20-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1860,8 +1858,8 @@ Additionnal information passed would comprise:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfbec593" class="outline-4">
-<h4 id="orgfbec593"><span class="section-number-4">5.20.3</span> Classical codes manipulation</h4>
+<div id="outline-container-orgdcfb775" class="outline-4">
+<h4 id="orgdcfb775"><span class="section-number-4">5.20.3</span> Classical codes manipulation</h4>
 <div class="outline-text-4" id="text-5-20-3">
 <p>
 Series of functions such as:
@@ -1880,13 +1878,12 @@ These functions might be provided by specialized libraries.
 </div>
 </div>
 
-
-<div id="outline-container-org1ecd4c3" class="outline-3">
-<h3 id="org1ecd4c3"><span class="section-number-3">5.21</span> Quantum error correction</h3>
+<div id="outline-container-org8da32c2" class="outline-3">
+<h3 id="org8da32c2"><span class="section-number-3">5.21</span> Quantum error correction</h3>
 <div class="outline-text-3" id="text-5-21">
 </div>
-<div id="outline-container-org164d7b3" class="outline-4">
-<h4 id="org164d7b3"><span class="section-number-4">5.21.1</span> Encoding of quantum information</h4>
+<div id="outline-container-org000c418" class="outline-4">
+<h4 id="org000c418"><span class="section-number-4">5.21.1</span> Encoding of quantum information</h4>
 <div class="outline-text-4" id="text-5-21-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1917,8 +1914,8 @@ These functions might be provided by specialized libraries.
 </div>
 </div>
 
-<div id="outline-container-org3dd3855" class="outline-4">
-<h4 id="org3dd3855"><span class="section-number-4">5.21.2</span> Stabilizer measurement</h4>
+<div id="outline-container-orgaf96c8e" class="outline-4">
+<h4 id="orgaf96c8e"><span class="section-number-4">5.21.2</span> Stabilizer measurement</h4>
 <div class="outline-text-4" id="text-5-21-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1949,8 +1946,8 @@ These functions might be provided by specialized libraries.
 </div>
 </div>
 
-<div id="outline-container-org372c91f" class="outline-4">
-<h4 id="org372c91f"><span class="section-number-4">5.21.3</span> Application of error corrections</h4>
+<div id="outline-container-org588a92a" class="outline-4">
+<h4 id="org588a92a"><span class="section-number-4">5.21.3</span> Application of error corrections</h4>
 <div class="outline-text-4" id="text-5-21-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1981,8 +1978,8 @@ These functions might be provided by specialized libraries.
 </div>
 </div>
 
-<div id="outline-container-orgb8b7d6a" class="outline-4">
-<h4 id="orgb8b7d6a"><span class="section-number-4">5.21.4</span> Transversal logical gates application</h4>
+<div id="outline-container-org15dea08" class="outline-4">
+<h4 id="org15dea08"><span class="section-number-4">5.21.4</span> Transversal logical gates application</h4>
 <div class="outline-text-4" id="text-5-21-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -2018,8 +2015,8 @@ These functions might be provided by specialized libraries.
 </div>
 </div>
 
-<div id="outline-container-org439df03" class="outline-4">
-<h4 id="org439df03"><span class="section-number-4">5.21.5</span> Logical computational basis measurement</h4>
+<div id="outline-container-org51327f2" class="outline-4">
+<h4 id="org51327f2"><span class="section-number-4">5.21.5</span> Logical computational basis measurement</h4>
 <div class="outline-text-4" id="text-5-21-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -2050,8 +2047,8 @@ These functions might be provided by specialized libraries.
 </div>
 </div>
 
-<div id="outline-container-org9240031" class="outline-4">
-<h4 id="org9240031"><span class="section-number-4">5.21.6</span> Decoding of quantum information</h4>
+<div id="outline-container-orga0681fb" class="outline-4">
+<h4 id="orga0681fb"><span class="section-number-4">5.21.6</span> Decoding of quantum information</h4>
 <div class="outline-text-4" id="text-5-21-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -2088,8 +2085,8 @@ NB: Here we have made the choice to rely on classical error correction procedure
 </div>
 </div>
 
-<div id="outline-container-org9aaa88e" class="outline-3">
-<h3 id="org9aaa88e"><span class="section-number-3">5.22</span> Privacy amplification</h3>
+<div id="outline-container-orge116afb" class="outline-3">
+<h3 id="orge116afb"><span class="section-number-3">5.22</span> Privacy amplification</h3>
 <div class="outline-text-3" id="text-5-22">
 <p>
 Useful for implementations of QKD protocols. Would offer various schemes for privacy amplification 
@@ -2127,8 +2124,8 @@ The scheme would take the following parameters:
 </div>
 </div>
 
-<div id="outline-container-org6d04d2f" class="outline-3">
-<h3 id="org6d04d2f"><span class="section-number-3">5.23</span> Quantum 1-way function</h3>
+<div id="outline-container-org51efa60" class="outline-3">
+<h3 id="org51efa60"><span class="section-number-3">5.23</span> Quantum 1-way function</h3>
 <div class="outline-text-3" id="text-5-23">
 <p>
 Used in digital signature schemes and quantum cheques. This function takes a classical bit, a key and outputs a block of qubits that encode the classical bit with the help of a classical key \(k\).
@@ -2140,8 +2137,8 @@ The inputs/outputs is defined in a way similar to the BB84 encoding / equatorial
 </div>
 </div>
 
-<div id="outline-container-org1b4c6b1" class="outline-3">
-<h3 id="org1b4c6b1"><span class="section-number-3">5.24</span> Channels</h3>
+<div id="outline-container-org8a2bd61" class="outline-3">
+<h3 id="org8a2bd61"><span class="section-number-3">5.24</span> Channels</h3>
 <div class="outline-text-3" id="text-5-24">
 <p>
 Various implementation of quantum and classical channels will be useful as it is common in protocols to require one or several of these. Their precise specification will be depending on the network available to implement them. One constraint needs to be kept in mind: most implementations will be required to have low latency as, even for the case of classical information, it might otherwise mean that qubits containing precious quantum information are at risk of decoherence. 
@@ -2164,8 +2161,8 @@ List of channels to implement:
 </div>
 </div>
 
-<div id="outline-container-org1591973" class="outline-3">
-<h3 id="org1591973"><span class="section-number-3">5.25</span> Weak String Erasure</h3>
+<div id="outline-container-org86e79b0" class="outline-3">
+<h3 id="org86e79b0"><span class="section-number-3">5.25</span> Weak String Erasure</h3>
 <div class="outline-text-3" id="text-5-25">
 <p>
 This protocol can be seen as a purposedly imperfect transport protocol. It is thus categorized in the transport layer and should have flow control and congestion control mechanisms.
@@ -2206,8 +2203,8 @@ This protocol can be seen as a purposedly imperfect transport protocol. It is th
 </div>
 </div>
 
-<div id="outline-container-orgf766105" class="outline-2">
-<h2 id="orgf766105"><span class="section-number-2">6</span> Knowledge graph representation of relations between atomic functions and protocols of the zoo</h2>
+<div id="outline-container-org729c7e1" class="outline-2">
+<h2 id="org729c7e1"><span class="section-number-2">6</span> Knowledge graph representation of relations between atomic functions and protocols of the zoo</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 The knowledge graph presented below contains the various protocols and atomic functions extract from the quantum protocol zoo. The larger nodes are atomic functions, while smaller ones correspond to application level protocols. The color of the nodes correspond to the network stage of the task: 
@@ -2238,8 +2235,8 @@ Here, note that  we did not represent possible implementations of atomic tasks. 
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2020-02-24</p>
-<p class="date">Created: 2020-03-31 Tue 09:14</p>
+<p class="date">Date: 2020-03-31</p>
+<p class="date">Created: 2020-04-03 Fri 14:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

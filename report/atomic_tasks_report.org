@@ -9,7 +9,7 @@
 :END:
 
 #+TITLE: Quantum Internet Alliance M4.2: List of atomic tasks
-#+DATE:2020-02-24
+#+DATE:2020-03-31
 #+AUTHOR:
 
 * Purpose
@@ -229,8 +229,6 @@ For a transport layer functionality, it is expected to provide reliable service 
 
 ** Teleportation halves
 While teleportation is the heart of the transport layer in entanglement sharing networks, it is useful to have each half of the protocol available directly to the programmer as a way to teleport while quantum one time padding information. This is especially useful in measurement based quantum computation for blindness and verification. In this case, teleportation measurement is performed, but the sender does not send the corrections to the receiver.
-
-
 *** Sending half
 
 #+ATTR_LATEX: :environment longtable :align p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}
@@ -437,7 +435,6 @@ Series of functions such as:
 
 These functions might be provided by specialized libraries.
 
-
 ** Quantum error correction
 *** Encoding of quantum information 
 #+ATTR_LATEX: :environment longtable :align p{.5\linewidth-2\tabcolsep}|p{.5\linewidth-2\tabcolsep}
@@ -540,8 +537,7 @@ Here, note that  we did not represent possible implementations of atomic tasks. 
 
 [[./atomic.kg.png]]
 
-
-* KG                                                               :noexport:
+* Knowledge Graph data                                             :noexport:
 ** Nodes
 
 NB: Session: as soon as there is a set-up phase that can be used across multiple rounds

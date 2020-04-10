@@ -1,0 +1,2243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-04-03 Fri 14:53 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quantum Internet Alliance M4.2: List of atomic tasks</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Quantum Internet Alliance M4.2: List of atomic tasks</h1>
+
+
+<div id="outline-container-org0536d81" class="outline-2">
+<h2 id="org0536d81"><span class="section-number-2">1</span> Purpose</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Application level protocols need to have access to networking services such as entanglement sharing between any two points of the network. While such service is at the heart of the quantum internet architecture, additional functionalities can be required or just convenient to have for better, faster, wider development of application level protocols. 
+</p>
+
+<p>
+The purpose of this report is to review a wide range of such protocols searching for atomic repeatable functions while categorising them along several dimensions. By doing so, we aim at providing building blocks that:
+</p>
+<ul class="org-ul">
+<li>lessen the amount of code and control needed while developing applications for the quantum internet (in particular through code reuse);</li>
+<li>allow benchmarking of the nodes and network capabilities against these tasks;</li>
+<li>provide functionalities with sound cryptographic definitions;</li>
+<li>provide a simulation platform where these functions would already be implemented, to further accelerate the creation cycle of quantum protocols.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5ddf1fa" class="outline-2">
+<h2 id="org5ddf1fa"><span class="section-number-2">2</span> Methodology</h2>
+<div class="outline-text-2" id="text-2">
+<ol class="org-ol">
+<li>Review of the quantum protocol zoo looking at the various protocols;</li>
+<li>Identify and group candidate atomic functions;</li>
+<li>Categorising various candidates into network stages, type (quantum internet layer attribution, off-layer), and necessity</li>
+<li>Integration into protocol zoo's knowledge graph</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org1c97ec1" class="outline-2">
+<h2 id="org1c97ec1"><span class="section-number-2">3</span> Review of the quantum protocol zoo</h2>
+<div class="outline-text-2" id="text-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Protocol</th>
+<th scope="col" class="org-left">Functionalities used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">GHZ-based Quantum Anonymous Transmission</td>
+<td class="org-left">Classical authenticated channel</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/quant-ph/0409201">https://arxiv.org/abs/quant-ph/0409201</a></td>
+<td class="org-left">Creation and braodcast of GHZ state</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Classical collision detection protocol</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Single qubit measurement</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Single qubit Hadamard gate</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Local memory</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Teleportation</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Verifiable Quantum Anonymous Transmission</td>
+<td class="org-left">Notification (private computation of classical parity, OR, Rand)</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/pdf/1811.04729.pdf">https://arxiv.org/pdf/1811.04729.pdf</a></td>
+<td class="org-left">Single qubit measurements in the equatorial plane</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Local memory</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">(Uses GHZ anonymous transmission as subroutine)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Polynomial Code based Quantum Authentication</td>
+<td class="org-left">Clifford circuits (error correction)</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/pdf/quant-ph/0205128.pdf">https://arxiv.org/pdf/quant-ph/0205128.pdf</a></td>
+<td class="org-left">Local memory</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Fast Quantum Byzantine Agreement</td>
+<td class="org-left">Creation and braodcast of GHZ state</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://dl.acm.org/doi/10.1145/1060590.1060662">https://dl.acm.org/doi/10.1145/1060590.1060662</a></td>
+<td class="org-left">Multipartite Entanglement Verification</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">(Uses oblivious common coin)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">(Uses Verifiable Quantum Secret Sharing)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Quantum Bit Commitment</td>
+<td class="org-left">BB84 Encoding of classical data</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/1108.2879">https://arxiv.org/abs/1108.2879</a></td>
+<td class="org-left">BB84 Decoding to classical data</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Secure classical channel</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Fast operations to keep the relativistic constraints</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Quantum Coin Flipping</td>
+<td class="org-left">\(\pi/9\) single qubit preparation</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/quant-ph/9904078">https://arxiv.org/abs/quant-ph/9904078</a></td>
+<td class="org-left">Multi qubit POVM</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Gottesman and Chuang Quantum Digital Signature</td>
+<td class="org-left">Local memory</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/quant-ph/0105032">https://arxiv.org/abs/quant-ph/0105032</a></td>
+<td class="org-left">Swap test</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Stabilizer states creation</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Prepare and Measure Quantum Digital Signature (QDS)</td>
+<td class="org-left">BB84 Encoding of classical data</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/1403.5551">https://arxiv.org/abs/1403.5551</a></td>
+<td class="org-left">BB84 Decoding to classical data</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Measurement Device Independent QDS</td>
+<td class="org-left">Classical authenticated channel</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/pdf/1704.07178.pdf">https://arxiv.org/pdf/1704.07178.pdf</a></td>
+<td class="org-left">Measurement Device Independent QKD link</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">BB84 Encoding of classical data</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">BB84 Decoding to classical data</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Multipartite Entanglement Verification</td>
+<td class="org-left">Classical authenticated channel</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.nature.com/articles/ncomms13251">https://www.nature.com/articles/ncomms13251</a></td>
+<td class="org-left">Secure classical broadcast</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Common shared randomness</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Local memory</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">BB84 Decoding to classical data</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Creation and braodcast of GHZ state</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Quantum Fingerprinting</td>
+<td class="org-left">Clifford gates</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/quant-ph/0102001">https://arxiv.org/abs/quant-ph/0102001</a></td>
+<td class="org-left">Swap test</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">BB84</td>
+<td class="org-left">BB84 Encoding of classical data</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://core.ac.uk/download/pdf/82447194.pdf">https://core.ac.uk/download/pdf/82447194.pdf</a></td>
+<td class="org-left">BB84 Decoding to classical data</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Authenticated classical channel</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Privacy amplification</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Information reconciliation</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Device Independent QKD</td>
+<td class="org-left">EPR distribution</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/1811.07983">https://arxiv.org/abs/1811.07983</a></td>
+<td class="org-left">Information reconciliation</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Privacy amplification</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Quantum Leader Election</td>
+<td class="org-left">(Uses Weak coin flipping)</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/0910.4952">https://arxiv.org/abs/0910.4952</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Quantum Cheque</td>
+<td class="org-left">Creation and braodcast of GHZ state</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://link.springer.com/article/10.1007/s11128-016-1273-4">https://link.springer.com/article/10.1007/s11128-016-1273-4</a></td>
+<td class="org-left">Local memory</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Quantum 1-way function</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">SWAP test</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">(Uses QKD)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Quantum Coin</td>
+<td class="org-left">Clifford gates</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://users.math.cas.cz/~gavinsky/papers/QuMoClaV.pdf">http://users.math.cas.cz/~gavinsky/papers/QuMoClaV.pdf</a></td>
+<td class="org-left">Local memory</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Quantum Token</td>
+<td class="org-left">BB84 Encoding of classical data</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">BB84 Decoding to classical data</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Local memory</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Wiesner Quantum Money</td>
+<td class="org-left">BB84 Encoding of classical data</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://users.cms.caltech.edu/~vidick/teaching/120_qcrypto/wiesner.pdf">http://users.cms.caltech.edu/~vidick/teaching/120_qcrypto/wiesner.pdf</a></td>
+<td class="org-left">BB84 Decoding to classical data</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Local memory</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Quantum Oblivious transfer</td>
+<td class="org-left">BB84 Encoding of classical data</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://link.springer.com/chapter/10.1007/3-540-46766-1_29">https://link.springer.com/chapter/10.1007/3-540-46766-1_29</a></td>
+<td class="org-left">BB84 Decoding to classical data</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Classical FHE for Quantum Circuits</td>
+<td class="org-left">Full QC</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/1708.02130">https://arxiv.org/abs/1708.02130</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Measurement-Only Universal Blind Quantum Computation</td>
+<td class="org-left">Graph state generation</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.87.050301">https://journals.aps.org/pra/abstract/10.1103/PhysRevA.87.050301</a></td>
+<td class="org-left">Equatorial plane measurements</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Prepare-and-Send Quantum Fully Homomorphic Encryption</td>
+<td class="org-left">Full QC (server)</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/1603.09717">https://arxiv.org/abs/1603.09717</a></td>
+<td class="org-left">Quantum OTP (client)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Prepare-and-Send Universal Blind Quantum Computation</td>
+<td class="org-left">Graph state generation</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/0807.4154">https://arxiv.org/abs/0807.4154</a></td>
+<td class="org-left">Equatorial plane measurements</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Pseudo-Secret Random Qubit Generator</td>
+<td class="org-left">Full QC on server's side</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/1802.08759">https://arxiv.org/abs/1802.08759</a></td>
+<td class="org-left">Quantum-safe one-way functions</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Prepare-and-Send Verifiable Universal Blind Quantum Computation</td>
+<td class="org-left">Graph state generation</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/1203.5217">https://arxiv.org/abs/1203.5217</a></td>
+<td class="org-left">Equatorial plane measurement</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Quantum One Time Pad</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Local memory</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Measurement-Only Verifiable Universal Blind Quantum Computation</td>
+<td class="org-left">Graph state generation</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/1208.1495">https://arxiv.org/abs/1208.1495</a></td>
+<td class="org-left">Equatorial plane measurement</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Local memory</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Prepare-and-Send Verifiable Quantum Fully Homomorphic Encryption</td>
+<td class="org-left">Full QC (server)</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/1708.09156">https://arxiv.org/abs/1708.09156</a></td>
+<td class="org-left">Clifford QC (client)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Secure Multiparty Delegated Quantum Computation</td>
+<td class="org-left">Graph state generation</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://arxiv.org/abs/1606.09200">https://arxiv.org/abs/1606.09200</a></td>
+<td class="org-left">Verifiable secret sharing</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">State Teleportation</td>
+<td class="org-left">EPR state source and broadcasting</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://doi.org/10.1103/PhysRevLett.70.1895">https://doi.org/10.1103/PhysRevLett.70.1895</a></td>
+<td class="org-left">BB84 Decoding to classical data</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Weak String Erasure</td>
+<td class="org-left">BB84 Encoding of classical data</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://eprint.iacr.org/2005/291.pdf">https://eprint.iacr.org/2005/291.pdf</a></td>
+<td class="org-left">BB84 Decoding to classical data</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orge02764b" class="outline-2">
+<h2 id="orge02764b"><span class="section-number-2">4</span> Task extraction and categorisation</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The table below presents the extracted tasks from the protocols listed above. Each task is categorized in the layer model of quantum networks (ie. Physical, Layer, Network, Transport, Session, Presentation, Application or Off layer). The Network stage is also specified for each of these atomic functions (ie. in increasing complexity starting from trusted repeaters, entanglement distribution, quantum memory and quantum computing).
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Function</th>
+<th scope="col" class="org-left">Layer</th>
+<th scope="col" class="org-left">Network stage</th>
+<th scope="col" class="org-left">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Sending qubit</td>
+<td class="org-left">Transport</td>
+<td class="org-left">Trusted repeater</td>
+<td class="org-left">Should be provided by a Transport layer</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Teleportation protocol</td>
+<td class="org-left">Transport</td>
+<td class="org-left">Entanglement distribution</td>
+<td class="org-left">Should be provided by a Transport layer</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Creation and braodcast of GHZ state</td>
+<td class="org-left">Session</td>
+<td class="org-left">Quantum memory</td>
+<td class="org-left">Often core for multiparty protocols</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Creation and broadcast of any stabilizer state</td>
+<td class="org-left">Session</td>
+<td class="org-left">Quantum memory</td>
+<td class="org-left">Often core for multiparty protocols</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Creation and broadcast of arbitrary graph states</td>
+<td class="org-left">Session</td>
+<td class="org-left">Quantum computing</td>
+<td class="org-left">Often core for multiparty protocols</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Quantum One Time Pad / confidential channel (encoding and decoding)</td>
+<td class="org-left">Presentation</td>
+<td class="org-left">Prep. and meas.</td>
+<td class="org-left">Core</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">BB84 Encoding of classical data</td>
+<td class="org-left">Presentation</td>
+<td class="org-left">Prep. and meas.</td>
+<td class="org-left">Core</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">BB84 Decoding to classical data</td>
+<td class="org-left">Presentation</td>
+<td class="org-left">Prep. and meas.</td>
+<td class="org-left">Core</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Single Qubit Preparation in equatorial plane (finite set of angles)</td>
+<td class="org-left">Presentation</td>
+<td class="org-left">Prep. and meas.</td>
+<td class="org-left">Core</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Single Qubit Measurement in equatorial plane (finite set of angles)</td>
+<td class="org-left">Presentation</td>
+<td class="org-left">Prep. and meas.</td>
+<td class="org-left">Core</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Multi qubit POVM</td>
+<td class="org-left">Presentation</td>
+<td class="org-left">Quantum memory</td>
+<td class="org-left">Assess usefulness / code repetition avoidance</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Local Clifford gates</td>
+<td class="org-left">Off</td>
+<td class="org-left">Quantum memory</td>
+<td class="org-left">Core</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Local memory</td>
+<td class="org-left">Off</td>
+<td class="org-left">Quantum memory</td>
+<td class="org-left">Core</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Local non Clifford gates</td>
+<td class="org-left">Off</td>
+<td class="org-left">Quantum computing</td>
+<td class="org-left">Core</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Verification of stabilizer state</td>
+<td class="org-left">Off</td>
+<td class="org-left">Quantum memory</td>
+<td class="org-left">Not atomic but useful to avoid code repetition</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">QFactory</td>
+<td class="org-left">Off</td>
+<td class="org-left">Quantum computing</td>
+<td class="org-left">Core</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Swap Test</td>
+<td class="org-left">Off</td>
+<td class="org-left">Quantum memory</td>
+<td class="org-left">Core</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Information reconciliation</td>
+<td class="org-left">Off</td>
+<td class="org-left">Classical</td>
+<td class="org-left">Core if throughput is important / not atomic but useful to avoid code repetition</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Classical error correction</td>
+<td class="org-left">Off</td>
+<td class="org-left">Classical</td>
+<td class="org-left">Core if throughput is important / not atomic but useful to avoid code repetition</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Quantum error correction</td>
+<td class="org-left">Off</td>
+<td class="org-left">Quantum computing</td>
+<td class="org-left">Restrict to the quantum part of ECC, classical part done by CECC. Could fit in several layers</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Privacy amplification</td>
+<td class="org-left">Off</td>
+<td class="org-left">Classical</td>
+<td class="org-left">Core if throughput is important</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Secure classical broadcast channel</td>
+<td class="org-left">Off</td>
+<td class="org-left">Classical</td>
+<td class="org-left">Core if protocol needs speed / low latency</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Classical authenticated channel</td>
+<td class="org-left">Off</td>
+<td class="org-left">Classical</td>
+<td class="org-left">Core if protocol needs speed / low latency</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Quantum 1 way function</td>
+<td class="org-left">Off</td>
+<td class="org-left">Prep. and meas.</td>
+<td class="org-left">Not atomic but useful to avoid code repetition</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Anonymous transmission channel</td>
+<td class="org-left">Session</td>
+<td class="org-left">Quantum memory</td>
+<td class="org-left">Not atomic but useful as building block</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Quantum Authenticated Channel</td>
+<td class="org-left">Session</td>
+<td class="org-left">Quantum memory</td>
+<td class="org-left">Not atomic but useful as building block</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Weak String Erasure</td>
+<td class="org-left">Transport</td>
+<td class="org-left">Trusted repeater</td>
+<td class="org-left">Not atomic but useful as building block</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org39d5cbe" class="outline-2">
+<h2 id="org39d5cbe"><span class="section-number-2">5</span> Tasks specifications</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org4ad8bb8" class="outline-3">
+<h3 id="org4ad8bb8"><span class="section-number-3">5.1</span> Sending qubit</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+This functionality should be provided at the transport layer for entanglement sharing networks. It would be at the link layer for networks based on direct transmission of quantum informaton (QKD-like networks).
+</p>
+
+<p>
+For a transport layer functionality, it is expected to provide reliable service with flow control (allowing the sender to improve its probability of correct transmission by detecting possible congestion at the receiving end or along the way). 
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Source node: Qubit or Qubits block</td>
+<td class="org-left">Source node: ACK and Flow Control - Congestion Control Message / ERR or ERR Message</td>
+</tr>
+
+<tr>
+<td class="org-left">Source node: Target node ID</td>
+<td class="org-left">Target node: Qubit or Qubits block</td>
+</tr>
+
+<tr>
+<td class="org-left">Source node: Metadata</td>
+<td class="org-left">Target node: Qubit ID or Qubits ID block, Source node ID, Additional Qubit or Qubit block metadata</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgafe711f" class="outline-3">
+<h3 id="orgafe711f"><span class="section-number-3">5.2</span> Teleportation halves</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+While teleportation is the heart of the transport layer in entanglement sharing networks, it is useful to have each half of the protocol available directly to the programmer as a way to teleport while quantum one time padding information. This is especially useful in measurement based quantum computation for blindness and verification. In this case, teleportation measurement is performed, but the sender does not send the corrections to the receiver.
+</p>
+</div>
+<div id="outline-container-orga63d507" class="outline-4">
+<h4 id="orga63d507"><span class="section-number-4">5.2.1</span> Sending half</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Source node: Qubit or block of Qubits</td>
+<td class="org-left">Source node: Corrections or block of corrections</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Target node: Uncorrected qubit or block of uncorrected qubits</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+Correction sending and metadata sending is left up to the Source node as protocols might require a full flexibility over what is sent (or not sent). 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org74093ae" class="outline-4">
+<h4 id="org74093ae"><span class="section-number-4">5.2.2</span> Receiving half</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Target node: Corrections or block of corrections</td>
+<td class="org-left">Target node: Corrected Qubit or block of Qubits</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The receiving half can be replaced by a quantum One-Time-Pad encoding / decoding with a proper labelling of the corrections.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6708d4f" class="outline-3">
+<h3 id="org6708d4f"><span class="section-number-3">5.3</span> Creation and braodcast of GHZ state</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+GHZ states are central to several multi-party protocols. Several implementations can be proposed:
+</p>
+<ul class="org-ul">
+<li>either a centralized create and broadcast operation using a regular transport layer,</li>
+<li>or tapping directly into the network layer for using bipartite entanglement as a way to generate the GHZ state in a decentralized fashion.</li>
+</ul>
+
+<p>
+The first option would yield two atomic sub-tasks, while the latter would involve a protocol on its own.
+</p>
+</div>
+
+<div id="outline-container-org259ea15" class="outline-4">
+<h4 id="org259ea15"><span class="section-number-4">5.3.1</span> Local prepare</h4>
+<div class="outline-text-4" id="text-5-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Number of parties</td>
+<td class="org-left">N-Party GHZ state</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgef546e1" class="outline-4">
+<h4 id="orgef546e1"><span class="section-number-4">5.3.2</span> Broadcast</h4>
+<div class="outline-text-4" id="text-5-3-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Source node: N-qubit register</td>
+<td class="org-left">Source node: ACK and Flow Control - Congestion Control Messages / ERR or ERR Message</td>
+</tr>
+
+<tr>
+<td class="org-left">Source node: length-N Target node IDs</td>
+<td class="org-left">Per Target node : Qubit</td>
+</tr>
+
+<tr>
+<td class="org-left">Source node: Additional constraints (eg. TTL)</td>
+<td class="org-left">Per Target node: Qubit ID, Source node ID, metadata</td>
+</tr>
+
+<tr>
+<td class="org-left">Source node: Overall state metadata</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge21052e" class="outline-3">
+<h3 id="orge21052e"><span class="section-number-3">5.4</span> Creation and broadcast of any stabilizer state</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+Specifications similar to GHZ state creation and broadcast.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8948827" class="outline-3">
+<h3 id="org8948827"><span class="section-number-3">5.5</span> Creation and broadcast of arbitrary graph states</h3>
+<div class="outline-text-3" id="text-5-5">
+<p>
+Specifications similar to GHZ state creation and broadcast.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd5bec48" class="outline-3">
+<h3 id="orgd5bec48"><span class="section-number-3">5.6</span> Quantum One Time Pad / confidential channel (encoding and decoding)</h3>
+<div class="outline-text-3" id="text-5-6">
+<p>
+Encoding and decoding are identical, yielding a single atomic task that is entirely performed locally. The "send" part can be performed using the send qubit atomic function and would yield a confidential quantum channel. It can also be implemented directly via teleportation without revealing the corrections.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Block of qubits</td>
+<td class="org-left">Block of encoded qubits</td>
+</tr>
+
+<tr>
+<td class="org-left">Block of encoding key (ie 2 bits per qubit specifying X and Z rotations)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org812bb47" class="outline-3">
+<h3 id="org812bb47"><span class="section-number-3">5.7</span> BB84 Encoding of classical data</h3>
+<div class="outline-text-3" id="text-5-7">
+<p>
+One of the most useful encoding, it is used in many protocols and is also helpful in unit-testing the library itself. This would be naturally embedded in a slightly more general preparation functionality where all 6 states that are eigenstates of Pauli operators can be prepared at will.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Block of classical data bits</td>
+<td class="org-left">Prepared block of qubits</td>
+</tr>
+
+<tr>
+<td class="org-left">Block of encoding bases</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgda6ec13" class="outline-3">
+<h3 id="orgda6ec13"><span class="section-number-3">5.8</span> BB84 Decoding to classical data</h3>
+<div class="outline-text-3" id="text-5-8">
+<p>
+Same reason. Symmetric functionality.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Block of qubits</td>
+<td class="org-left">Decoded block of classical bits (measurement outcomes given the measurement bases)</td>
+</tr>
+
+<tr>
+<td class="org-left">Block of encoding bases</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org98f67ff" class="outline-3">
+<h3 id="org98f67ff"><span class="section-number-3">5.9</span> Single Qubit Preparation in equatorial plane (finite set of angles)</h3>
+<div class="outline-text-3" id="text-5-9">
+<p>
+Useful in the context of measurement based quantum computing. A natural set of preparation angles is \(\{\frac{k\pi}{4}\}_{0\leq k \leq 7}\) as it is widely used in measurement based quantum computing schemes. Other angles could be optionally considered. 
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Block integers specifying the preparation angle</td>
+<td class="org-left">Block of prepared qubits</td>
+</tr>
+
+<tr>
+<td class="org-left">Block of bits (to apply \(+\pi\) to the preparation)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Option: list of preparation angles, defaults to \(k\pi/4\)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org5c19528" class="outline-3">
+<h3 id="org5c19528"><span class="section-number-3">5.10</span> Single Qubit Measurement in equatorial plane (finite set of angles)</h3>
+<div class="outline-text-3" id="text-5-10">
+<p>
+Same reason. Symmetric functionality.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Block integers specifying the measurement angles</td>
+<td class="org-left">Block of classical bits (measurement outcomes given the measurement angles)</td>
+</tr>
+
+<tr>
+<td class="org-left">Option: list of measurement angles, defaults to \(k\pi/4\)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org0ce61f1" class="outline-3">
+<h3 id="org0ce61f1"><span class="section-number-3">5.11</span> Multi qubit POVM</h3>
+<div class="outline-text-3" id="text-5-11">
+<p>
+While it is not possible to allow the implementation of generic POVM's even on a few qubits, some should be available readily as atomic functions. A possibility would be to allow for POVM's obtained as observables defined by stabilizer measurements as it would allow completing basic quantum error correcting schemes.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">N-qubit state</td>
+<td class="org-left">bit (measurement outcome associated to the projectors onto the \(\pm 1\) eigensubspaces of \(P\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Length-N Pauli operator \(P\)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org907b2eb" class="outline-3">
+<h3 id="org907b2eb"><span class="section-number-3">5.12</span> Local Pauli gates</h3>
+<div class="outline-text-3" id="text-5-12">
+<p>
+Necessary. Mostly provided by the backend it self.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Qubit</td>
+<td class="org-left">Rotated qubit</td>
+</tr>
+
+<tr>
+<td class="org-left">Pauli operator</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org4b7ba2b" class="outline-3">
+<h3 id="org4b7ba2b"><span class="section-number-3">5.13</span> Local Clifford gates</h3>
+<div class="outline-text-3" id="text-5-13">
+<p>
+Same as previous functionality.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfb4351e" class="outline-3">
+<h3 id="orgfb4351e"><span class="section-number-3">5.14</span> Local non Clifford gates</h3>
+<div class="outline-text-3" id="text-5-14">
+<p>
+Most backends or hardware provide the ability to perform \(T\) gates. These will serve as building blocks for distillation schemes before being used in real circuits. Same specification as the previous functionality.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgba21909" class="outline-3">
+<h3 id="orgba21909"><span class="section-number-3">5.15</span> Local memory manager</h3>
+<div class="outline-text-3" id="text-5-15">
+<p>
+The idea behind this functionality is to be able to handle various scenario influencing the robustness of protocols, such as being able to tell neighboring nodes that the capacity to accept new qubits is low before they actually send information. It might also be interesting to be able to keep track of the time to live of various qubits so that other parts of the protocols can take that into account and give higher priority to operations with a lower TTL. 
+</p>
+
+<p>
+The implementation of such functionality can be done in various ways and will highly depend on the backend and chosen architecture.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">nil</td>
+<td class="org-left">Available capacity for reciving or creating new qubits</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Optionally active qubit ID and their remaining TTL</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org5d7630e" class="outline-3">
+<h3 id="org5d7630e"><span class="section-number-3">5.16</span> Multi-site verification of stabilizer state</h3>
+<div class="outline-text-3" id="text-5-16">
+<p>
+This allows verified multiparty protocols. It also enters into unit testing for multi-party operations.
+</p>
+</div>
+
+<div id="outline-container-orgd666c62" class="outline-4">
+<h4 id="orgd666c62"><span class="section-number-4">5.16.1</span> Verifier side</h4>
+<div class="outline-text-4" id="text-5-16-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Length-N Prover node ID's</td>
+<td class="org-left">GOK / NOK</td>
+</tr>
+
+<tr>
+<td class="org-left">Qubit ID's per prover node</td>
+<td class="org-left">Accepted qubit-ID per Prover node</td>
+</tr>
+
+<tr>
+<td class="org-left">Stabilizer state description</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org6c27353" class="outline-4">
+<h4 id="org6c27353"><span class="section-number-4">5.16.2</span> Prover side</h4>
+<div class="outline-text-4" id="text-5-16-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Qubit IDs</td>
+<td class="org-left">list of measured outcomes</td>
+</tr>
+
+<tr>
+<td class="org-left">List of measurements to perform</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org359c645" class="outline-3">
+<h3 id="org359c645"><span class="section-number-3">5.17</span> QFactory</h3>
+<div class="outline-text-3" id="text-5-17">
+<p>
+Blind remote preparation of a classical described quantum state.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Client node: classical description of the quantum state</td>
+<td class="org-left">Server node: quantum state</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Client: classical bit spceifying the computational basis for the prepared state</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org3e6cb3a" class="outline-3">
+<h3 id="org3e6cb3a"><span class="section-number-3">5.18</span> Swap Test</h3>
+<div class="outline-text-3" id="text-5-18">
+<p>
+Implies to add the swap gate first and then the test. It should work indistinctively for individual qubits and blocks of qubits. The returned classical bit corresponds to a single measurement outcome (ie the test needs to be repeated to get the overlap value between the two tested-states).
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">2 blocks of qubits</td>
+<td class="org-left">classical bit</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org6a0f788" class="outline-3">
+<h3 id="org6a0f788"><span class="section-number-3">5.19</span> Information reconciliation</h3>
+<div class="outline-text-3" id="text-5-19">
+<p>
+Useful for implementations of QKD like protocols. Would offer a template for reconciliation allowing to plugin various error correction schemes.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Each participating node: Sifted key bits</td>
+<td class="org-left">Each participating node: reconciled key bits</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The parameters would specify: 
+</p>
+<ul class="org-ul">
+<li>the scheme to use for the reconciliation</li>
+<li>the kind of error estimation performed</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org73dc7a0" class="outline-3">
+<h3 id="org73dc7a0"><span class="section-number-3">5.20</span> Classical error correction</h3>
+<div class="outline-text-3" id="text-5-20">
+<p>
+Many protocols require classical error correction at a very fine grained level (be it for exploiting classical code properties in algorithms or to have manual control over some quantum error correction schemes using CSS codes). This entry would be consisting of a sub-library providing encoding, error estimation and decoding procedures as well as code manipulation functionalities. Depending on the use of these codes (either as being used off-line or on-line) they should provide fast implementations (possibly requiring dedicated libraries or even dedicated hardware).
+</p>
+</div>
+<div id="outline-container-orgeadc5f4" class="outline-4">
+<h4 id="orgeadc5f4"><span class="section-number-4">5.20.1</span> Classical information encoding</h4>
+<div class="outline-text-4" id="text-5-20-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\((n,k)\) code</td>
+<td class="org-left">Length-\(n\) encoded block</td>
+</tr>
+
+<tr>
+<td class="org-left">Length-\(k\) classical bits</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgc9f5d2d" class="outline-4">
+<h4 id="orgc9f5d2d"><span class="section-number-4">5.20.2</span> Classical information error estimation and decoding</h4>
+<div class="outline-text-4" id="text-5-20-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\((n,k)\) code</td>
+<td class="org-left">Length-\(k\) decoded bits or quantized probabilities of being \(1\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Length-\(n\) noisy encoded block (bits or quantized continuous value)</td>
+<td class="org-left">Length-\((n-k)\) syndrome values (bits or quantized values)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Most likely length-\(n\) error vector</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Additionnal information passed would comprise: 
+</p>
+<ul class="org-ul">
+<li>Noise model</li>
+<li>Input type (bits or quantized values)</li>
+<li>Output type (hard or soft decoding)</li>
+<li>Error estimation strategy</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org63bf185" class="outline-4">
+<h4 id="org63bf185"><span class="section-number-4">5.20.3</span> Classical codes manipulation</h4>
+<div class="outline-text-4" id="text-5-20-3">
+<p>
+Series of functions such as:
+</p>
+<ul class="org-ul">
+<li>Coset sampling</li>
+<li>Dual code encoding and decoding</li>
+<li>Concatenation</li>
+<li>&#x2026;</li>
+</ul>
+
+<p>
+These functions might be provided by specialized libraries.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org282c0ea" class="outline-3">
+<h3 id="org282c0ea"><span class="section-number-3">5.21</span> Quantum error correction</h3>
+<div class="outline-text-3" id="text-5-21">
+</div>
+<div id="outline-container-orgeedcd0a" class="outline-4">
+<h4 id="orgeedcd0a"><span class="section-number-4">5.21.1</span> Encoding of quantum information</h4>
+<div class="outline-text-4" id="text-5-21-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\((n,k)\) quantum code</td>
+<td class="org-left">Encoded qubit block</td>
+</tr>
+
+<tr>
+<td class="org-left">Length-\(k\) qubit block</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org2bd5a95" class="outline-4">
+<h4 id="org2bd5a95"><span class="section-number-4">5.21.2</span> Stabilizer measurement</h4>
+<div class="outline-text-4" id="text-5-21-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(n-k\) stabilizer group generators</td>
+<td class="org-left">Length-\((n-k)\)  binary vector of measurement outcomes</td>
+</tr>
+
+<tr>
+<td class="org-left">Length-\(n\) qubit block</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orga0e0c99" class="outline-4">
+<h4 id="orga0e0c99"><span class="section-number-4">5.21.3</span> Application of error corrections</h4>
+<div class="outline-text-4" id="text-5-21-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Length-\(n\) qubit block</td>
+<td class="org-left">Length-\(n\) qubit block</td>
+</tr>
+
+<tr>
+<td class="org-left">Length-\(n\) vector of Pauli operators</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org21517b6" class="outline-4">
+<h4 id="org21517b6"><span class="section-number-4">5.21.4</span> Transversal logical gates application</h4>
+<div class="outline-text-4" id="text-5-21-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Description of 1 or 2 logical qubit blocks</td>
+<td class="org-left">1 ou 2 logical qubits blocks</td>
+</tr>
+
+<tr>
+<td class="org-left">1 or 2 logical qubits gates</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">1 or 2 logical qubits blocks</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org5eeb0ec" class="outline-4">
+<h4 id="org5eeb0ec"><span class="section-number-4">5.21.5</span> Logical computational basis measurement</h4>
+<div class="outline-text-4" id="text-5-21-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\((n,k)\) stabilizer code</td>
+<td class="org-left">outcome of the measurement</td>
+</tr>
+
+<tr>
+<td class="org-left">Logical qubit to measure</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgf984b7b" class="outline-4">
+<h4 id="orgf984b7b"><span class="section-number-4">5.21.6</span> Decoding of quantum information</h4>
+<div class="outline-text-4" id="text-5-21-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\((n,k)\) quantum code</td>
+<td class="org-left">Decoded length-\(k\) qubits block</td>
+</tr>
+
+<tr>
+<td class="org-left">Length-\(n\) encoded qubit block</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+NB: Here we have made the choice to rely on classical error correction procedure for estimating the most likely error given a noise model. This can be done because quantum codes are classical codes over \(GF(4)\).
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbebba93" class="outline-3">
+<h3 id="orgbebba93"><span class="section-number-3">5.22</span> Privacy amplification</h3>
+<div class="outline-text-3" id="text-5-22">
+<p>
+Useful for implementations of QKD protocols. Would offer various schemes for privacy amplification 
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Insecure shared random key</td>
+<td class="org-left">Secure shared random key</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The scheme would take the following parameters: 
+</p>
+<ul class="org-ul">
+<li>a privacy amplification scheme</li>
+<li>an estimate of the information in the hands of an adversary</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org40f2a39" class="outline-3">
+<h3 id="org40f2a39"><span class="section-number-3">5.23</span> Quantum 1-way function</h3>
+<div class="outline-text-3" id="text-5-23">
+<p>
+Used in digital signature schemes and quantum cheques. This function takes a classical bit, a key and outputs a block of qubits that encode the classical bit with the help of a classical key \(k\).
+</p>
+
+<p>
+The inputs/outputs is defined in a way similar to the BB84 encoding / equatorial plane encoding
+</p>
+</div>
+</div>
+
+<div id="outline-container-org75d18f7" class="outline-3">
+<h3 id="org75d18f7"><span class="section-number-3">5.24</span> Channels</h3>
+<div class="outline-text-3" id="text-5-24">
+<p>
+Various implementation of quantum and classical channels will be useful as it is common in protocols to require one or several of these. Their precise specification will be depending on the network available to implement them. One constraint needs to be kept in mind: most implementations will be required to have low latency as, even for the case of classical information, it might otherwise mean that qubits containing precious quantum information are at risk of decoherence. 
+</p>
+
+<p>
+The Flow control and Congestion control messages available for sending qubits and blocks of qubits will need to be adapted to theses channels.
+</p>
+
+<p>
+List of channels to implement:
+</p>
+<ul class="org-ul">
+<li>Secure classical broadcast channel</li>
+<li>Specific implementation could be required for high precision timing reasons.</li>
+<li>Classical authenticated channel</li>
+<li>Quantum anonymous transmission channel</li>
+<li>Quantum Authenticated Channel</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0ac8234" class="outline-3">
+<h3 id="org0ac8234"><span class="section-number-3">5.25</span> Weak String Erasure</h3>
+<div class="outline-text-3" id="text-5-25">
+<p>
+This protocol can be seen as a purposedly imperfect transport protocol. It is thus categorized in the transport layer and should have flow control and congestion control mechanisms.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Inputs</th>
+<th scope="col" class="org-left">Outputs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Source node: length-N bit string of information to send</td>
+<td class="org-left">Source node: ACK and Flow Control - Congestion Control Message / ERR or ERR Message</td>
+</tr>
+
+<tr>
+<td class="org-left">Source node: length-N bit string of basis choices</td>
+<td class="org-left">Target node: Set of bits and positions where the value coincides with the source information bits</td>
+</tr>
+
+<tr>
+<td class="org-left">Target node: length-N bit string of basis choices</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc944e20" class="outline-2">
+<h2 id="orgc944e20"><span class="section-number-2">6</span> Knowledge graph representation of relations between atomic functions and protocols of the zoo</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+The knowledge graph presented below contains the various protocols and atomic functions extract from the quantum protocol zoo. The larger nodes are atomic functions, while smaller ones correspond to application level protocols. The color of the nodes correspond to the network stage of the task: 
+</p>
+<ul class="org-ul">
+<li>dark green: classical</li>
+<li>green: prepare and measure</li>
+<li>yellow: trusted repeater</li>
+<li>orange: entanglement distribution</li>
+<li>red: quantum memory</li>
+<li>purple: quantum computing.</li>
+</ul>
+
+<p>
+This graph clearly shows the (degree-) centrality of BB84 encoding as well as Sending qubit and Local memory functionalities. Less apparent without this graph are the role played by GHZ and graph state preparations. Their importance stems from their usefulness in most delegated quantum computing schemes as well as multipartite protocols. This would call for a specific attention in implementing these functionalities, maybe even considering  dedicated network architectures adapted to the production of these resource states.
+</p>
+
+<p>
+Here, note that  we did not represent possible implementations of atomic tasks. Instead, atomic functions are kept <i>atomic</i> because a single atomic function could be implemented in various ways each using different functionalities (see eg. creation and distribition of GHZ states involving broadcasting EPR pairs vs. local creation and qubit sending). Opting for one implementation against another is not the purpose of this report as flexibility should be in the hands of experimentalists in order for them to optimize the quality of the produced functionality given its input/output specification.
+</p>
+
+
+<div class="figure">
+<p><img src="./_rsc/atomic.kg.png" alt="atomic.kg.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2020-03-31</p>
+<p class="date">Created: 2020-04-03 Fri 14:53</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

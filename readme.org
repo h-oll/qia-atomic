@@ -7,16 +7,15 @@
 - Review the protocol zoo
 - Identify the atomic tasks for each protocol
 - Affect the atomic task into categories
-  - Ntework stage
+  - Network stage
   - Complexity of the task
   - Layer
   - Speed
 - Map the various tasks in a KG and find which are useful
 
-* Results
-** Protocol list + identified atomic tasks
-** Task categorization
-** KG
-** Software implementation recommendations
-** Hardware integration recommendations
+* Report
+The report has been produced as Milestone 4.1 of QIA project WP4. It has been released March 31st, 2020. It is located in under the =report= directory
+
+* Library
+The library is identified as =qpzlib=.
 

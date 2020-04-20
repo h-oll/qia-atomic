@@ -12,15 +12,15 @@ def Tinv(q, *args, **kwargs): q.rot_Z(224, *args, **kwargs); return q
 
 def CNOT(p, q, *args, **kwargs): p.cnot(q, *args, **kwargs); return p, q
 
-def PREP(node, *args, **kwargs): return qubit(node, *args, **kwargs)
+def PREP(host, *args, **kwargs): return qubit(host, *args, **kwargs)
 def MEAS(q, *args, **kwargs): return q.measure(*args, **kwargs)
 
 def DISP(q): print(q, f"""QID: {q._qID}"""); return None
 def QID(q): return q._qID
 
 #def EPR(): return None
-def SEND(q, target_id, node, *args, **kwargs): node.sendQubit(q, target_id, *args, **kwargs); return None
-def RECV(node, *args, **kwargs): return node.recvQubit(*args, **kwargs)
+def SEND(q, target_id, host, *args, **kwargs): host.sendQubit(q, target_id, *args, **kwargs); return None
+def RECV(host, *args, **kwargs): return host.recvQubit(*args, **kwargs)
 #def TELE(): return None
 
 mapping = {

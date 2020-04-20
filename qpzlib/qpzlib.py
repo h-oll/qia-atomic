@@ -7,26 +7,26 @@ from atomics.util import Util
 from atomics.test import Test
 
 class qpzlib:
-    def __init__(self, backend_mapping, node):
-        self.X = backend_mapping["X"]
-        self.Y = backend_mapping["Y"]
-        self.Z = backend_mapping["Z"]
-        self.H = backend_mapping["H"]
-        self.CNOT = backend_mapping["CNOT"]
+    def __init__(self, backend_mapping, host):
+        self.X = partial (backend_mapping["X"], host=host)
+        self.Y = partial (backend_mapping["Y"], host=host)
+        self.Z = partial (backend_mapping["Z"], host=host)
+        self.H = partial (backend_mapping["H"], host=host)
+        self.CNOT = partial (backend_mapping["CNOT"], host=host)
 
-        self.K = backend_mapping["K"]
-        self.T = backend_mapping["T"]
-        self.Tinv = backend_mapping["Tinv"]
+        self.K = partial (backend_mapping["K"], host=host)
+        self.T = partial (backend_mapping["T"], host=host)
+        self.Tinv = partial (backend_mapping["Tinv"], host=host)
 
-        self.PREP = partial (backend_mapping["PREP"], node=node)
-        self.MEAS = backend_mapping["MEAS"]
-        self.DISP = backend_mapping["DISP"]
-        self.QID = backend_mapping["QID"]
+        self.PREP = partial (backend_mapping["PREP"], host=host)
+        self.MEAS = partial (backend_mapping["MEAS"], host=host)
+        self.DISP = partial (backend_mapping["DISP"], host=host)
+        self.QID = partial (backend_mapping["QID"], host=host)
 
-        self.EPR = backend_mapping["EPR"]
-        self.SEND = partial (backend_mapping["SEND"], node=node)
-        self.RECV = partial (backend_mapping["RECV"], node=node)
-        self.TELE = backend_mapping["TELE"]
+        self.EPR = partial (backend_mapping["EPR"], host=host)
+        self.SEND = partial (backend_mapping["SEND"], host=host)
+        self.RECV = partial (backend_mapping["RECV"], host=host)
+        self.TELE = partial (backend_mapping["TELE"], host=host)
 
         mapp = self 
                         

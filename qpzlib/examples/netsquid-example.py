@@ -1,3 +1,18 @@
+import os,sys,inspect
+current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parent_dir = os.path.dirname(current_dir)
+sys.path.insert(0, parent_dir) 
+
+from qpzlib import qpzlib 
+from mappings.netsquid_prg import mapping
+
+###################################
+## Examples using NetSquid
+## 
+## 
+##
+
+
 import numpy as np
 import netsquid as ns
 from netsquid.nodes.node import Node
@@ -120,31 +135,6 @@ alice_node.connect_to(
 
 
 #################
-# programs
-
-class qOTP(QuantumProgram): # currently not used
-    def __init__(self, pauli):
-        self.num_bits = 1
-        self.pauli = pauli
-        super().__init__()
-
-    def program(self): 
-        if self.pauli == 0:
-            pass
-        elif self.pauli == 1:
-            self.apply(INSTR_X, 0)
-        elif self.pauli == 2:
-            self.apply(INSTR_Z, 0)
-        elif self.pauli == 3:
-            self.apply(INSTR_X, 0)
-            self.apply(INSTR_Z, 0)
-        else:
-            raise ValueError('pauli argument must be 0, 1, 2, 3')
-
-        yield self.run(parallel = False)
-
-
-#################
 # protocols
 
 class alice_protocol(NodeProtocol):
@@ -159,7 +149,13 @@ class alice_protocol(NodeProtocol):
         self.processor.send(0, self.node, self.to_q_port_name)
                 
     def run(self):
+
         print('Launching alice_protocol')
+        
+        plain_text_state = randint(0,3)
+        key = randint(0,3)
+        
+        print("Alice", "plain", plain_text_state, "key", key)
         
         class prepare_program(QuantumProgram):
             def __init__(self, init_state, pauli):
@@ -167,31 +163,22 @@ class alice_protocol(NodeProtocol):
                 self.num_bits = 1
                 self.pauli = pauli
                 self.init_state = init_state
-            def program(self):
-                print("Prepare_program", "run")
-                self.apply(INSTR_INIT, 0)
 
-                if self.init_state == 0:
-                    pass
-                elif self.init_state == 1:
-                    self.apply(INSTR_X, 0)
-                elif self.init_state == 2:
-                    self.apply(INSTR_H, 0)
-                elif self.init_state == 3:
-                    self.apply(INSTR_H, 0)
-                    self.apply(INSTR_Z, 0)
                 
-                if self.pauli == 0:
-                    pass
-                elif self.pauli == 1:
-                    self.apply(INSTR_X, 0)
-                elif self.pauli == 2:
-                    self.apply(INSTR_Z, 0)
-                elif self.pauli == 3:
-                    self.apply(INSTR_X, 0)
-                    self.apply(INSTR_Z, 0)
-                else:
-                    raise ValueError('pauli argument must be 0, 1, 2, 3')
+            def program(self):
+                _ = qpzlib(mapping, self)
+                q = _.PREP()
+                if self.init_state == 0: pass
+                elif self.init_state == 1: _.X(q)
+                elif self.init_state == 2: _.H(q)
+                elif self.init_state == 3: _.Z(_.H(q))
+
+
+                if self.pauli == 0: pass
+                elif self.pauli == 1: _.X(q)
+                elif self.pauli == 2: _.Z(q)
+                elif self.pauli == 3: _.Z(_.X(q))
+                else: raise ValueError('Pauli argument must be 0, 1, 2, 3')
 
                 yield self.run(parallel = False)
 
@@ -241,29 +228,21 @@ class bob_protocol(NodeProtocol):
                 self.pauli = pauli
                 
             def program(self):
-                if self.pauli == 0:
-                    pass
-                elif self.pauli == 1:
-                    self.apply(INSTR_X, 0)
-                elif self.pauli == 2:
-                    self.apply(INSTR_Z, 0)
-                elif self.pauli == 3:
-                    self.apply(INSTR_X, 0)
-                    self.apply(INSTR_Z, 0)
-                else:
-                    raise ValueError('pauli argument must be 0, 1, 2, 3')
+                _ = qpzlib(mapping, self)
+                q = 0
+                
+                if self.pauli == 0: pass
+                elif self.pauli == 1: _.X(q)
+                elif self.pauli == 2: _.Z(q)
+                elif self.pauli == 3: _.Z(_.X(q))
+                else: raise ValueError('pauli argument must be 0, 1, 2, 3')
 
-                if self.compare_state == 0:
-                    pass
-                elif self.compare_state == 1:
-                    self.apply(INSTR_X, 0)
-                elif self.compare_state == 2:
-                    self.apply(INSTR_H, 0)
-                elif self.compare_state == 3:
-                    self.apply(INSTR_Z, 0)
-                    self.apply(INSTR_H, 0)
+                if self.compare_state == 0:  pass
+                elif self.compare_state == 1: _.X(q)
+                elif self.compare_state == 2: _.H(q)
+                elif self.compare_state == 3: _.H(_.Z(q))
 
-                self.apply(INSTR_MEASURE, qubit_indices = 0, output_key = "outcome", physical = True)
+                _.MEAS(q)
                 
                 yield self.run(parallel = False)
 
@@ -311,4 +290,3 @@ bp.start()
 ap.start()
 ns.logger.setLevel(1)
 ns.sim_run()
-

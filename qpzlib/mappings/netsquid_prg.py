@@ -15,8 +15,8 @@ def CNOT(p, q, host, *args, **kwargs): host.apply(INSTR_CNOT, [p,q], *args, **kw
 def PREP(host, q = 0, *args, **kwargs): host.apply(INSTR_INIT, q, *args, **kwargs); return q
 def MEAS(q, host, *args, **kwargs): host.apply(INSTR_MEASURE, q, output_key=f"""outcome_{q}""", physical = True, *args, **kwargs)
 
-def DISP(q): print(q, f"""QID: {q}"""); return None
-def QID(q): return q
+def DISP(q, host, *args, **kwargs): print(q, f"""QID: {q}"""); return None
+def QID(q, host, *args, **kwargs): return q
 
 def EPR(*args, **kwargs): return None
 def SEND(q, target_id, node, *args, **kwargs): node.sendQubit(q, target_id, *args, **kwargs); return None ##TBD

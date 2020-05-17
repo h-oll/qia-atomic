@@ -1,6 +1,7 @@
 class Prep:
     def __init__(self, _): 
         def pauli(bit, base):
+            """bit in 0,1 -> base in 1=X,2=Z,3=Y -> qubit in basis = base with value = bit"""
             if base == 1: 
                 if bit == 0 : q = _.H(_.PREP())
                 elif bit == 1 : q = _.H(_.X(_.PREP()))

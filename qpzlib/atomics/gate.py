@@ -1,9 +1,22 @@
 class Gate:
-    def __init__(self, _): 
+    def __init__(self, _):
+        def CZ(c,t):
+            """
+            Control-Z gate implementation from CNOT
+            qubit -> qubit -> (qubit, qubit)
+            first qubit is control
+            second is target
+            return tuple (control, target)
+            """
+            _.H(t)
+            _.CNOT(c,t)
+            _.H(t)
+            return (c,t)
+
         def CSWAP(q0, q1, q2):        
             """
-            controll swap on two qubits q1 and q2, q0 is a controll qubit
-            implementation from https://www.mathstat.dal.ca/~selinger/quipper/doc/Quipper-Libraries-GateDecompositions.html
+            Control SWAP on two qubits q1 and q2, q0 is the control qubit.
+            Implementation from https://www.mathstat.dal.ca/~selinger/quipper/doc/Quipper-Libraries-GateDecompositions.html
             params : 
             q0,q1,q2: qubits
 
@@ -26,6 +39,7 @@ class Gate:
             _.CNOT(q1,q0)
             _.H(q2)
             _.CNOT(q2,q1)
-            return
+            return (q0, q1, q2)
 
         self.CSWAP = CSWAP
+        self.CZ = CZ

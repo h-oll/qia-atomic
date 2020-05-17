@@ -11,7 +11,7 @@ class Prep:
             elif base == 3: 
                 if bit == 0 : q = _.K(_.PREP())
                 elif bit == 1 : q = _.K(_.X(_.PREP()))
-            else: raise NameError("Cannot prepare this state")
+            else: raise NameError(f"""Cannot prepare this state: basis must be 1=X, 2=Z or 3=Y. Currently:  {m}""")
             return q
 
         def ghz(nb_target_nodes):

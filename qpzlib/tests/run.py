@@ -1,8 +1,6 @@
 import unittest
 import random
 
-import time
-
 from hypothesis import given, example, settings
 from hypothesis.strategies import text
 import hypothesis.strategies as st
@@ -13,7 +11,7 @@ parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir) 
 from qpzlib import qpzlib 
 
-import prep, pres
+import prep, meas, pres
 
 ## tests using simulaqron backend on a single node
 from cqc.pythonLib import CQCConnection
@@ -32,12 +30,20 @@ if __name__ == "__main__":
         @settings(deadline=None)
         def test_prep_pauli(bit, base): prep.pauli(_, bit, base)
 
+        @given(st.integers(min_value=0, max_value=1), st.integers(min_value=1, max_value=3))
+        @settings(deadline=None)
+        def test_meas_pauli(bit, base): meas.pauli(_, bit, base)
+        
         @given(st.integers(min_value=1, max_value=3), st.integers(min_value=1, max_value=2))
         @settings(deadline=None)
         def test_prep_ghz(nb_target_nodes, basis): prep.ghz(_, nb_target_nodes, basis)
 
         print("Pauli Preparation Tests")
         test_prep_pauli()
+        print("OK")
+
+        print("Pauli Measurement Tests")
+        test_meas_pauli()
         print("OK")
         
         print("Quantum OTP Tests")

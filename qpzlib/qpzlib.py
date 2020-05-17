@@ -1,6 +1,7 @@
 from functools import partial
 
 from .atomics.prep import Prep
+from .atomics.meas import Meas
 from .atomics.pres import Pres
 from .atomics.gate import Gate
 from .atomics.util import Util
@@ -32,6 +33,7 @@ class qpzlib:
                         
         self.gate = Gate(mapp)
         self.prep = Prep(mapp)
+        self.meas = Meas(mapp)
         self.pres = Pres(mapp)
         self.util = Util(mapp)
         self.test = Test(mapp)

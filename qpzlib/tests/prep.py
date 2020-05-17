@@ -4,6 +4,7 @@ import unittest
 def pauli(_, bit, base):
     print('.', end='', flush=True) 
     q = _.prep.pauli(bit, base)
+
     if base == 1: m = _.MEAS(_.H(q))
     elif base == 2: m = _.MEAS(q)
     elif base == 3: m = _.MEAS(_.K(q))

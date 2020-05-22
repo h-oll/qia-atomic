@@ -1,21 +1,23 @@
-* Purpose
-- Identify repeated atomic tasks in protocols
-- Code the most useful of them
-- Discuss the opportunity of including these tasks into the hardware that is being built
+#+TITLE: Using QPZLib
+#+AUTHOR: H. Ollivier
+#+DATE: 2020-03-02
 
-* Methodology
-- Review the protocol zoo
-- Identify the atomic tasks for each protocol
-- Affect the atomic task into categories
-  - Network stage
-  - Complexity of the task
-  - Layer
-  - Speed
-- Map the various tasks in a KG and find which are useful
+* Status
+The library is under active development but in a very ealy stage. 
 
-* Report
-The report has been produced as Milestone 4.1 of QIA project WP4. It has been released March 31st, 2020. It is located in under the =report= directory
+* Install
+Clone the repository from the master branch. Add the path to the library to your =PYTHONPATH=
 
-* Library
-The library is identified as =qpzlib=.
+=export PYTHONPATH=$PYTHONPATH:<absolute_path_to_QPZLib>=
 
+* Design principles
+- Backend mappings
+- Modularity
+- Tests
+
+* Usage
+Look at the =examples/examples.py= file. The library is instantiated for each node (as if the nodes were independent computers, each loading its version of the library). 
+
+Other sources of inspirations are the tests defined in the =tests= directory
+
+New atomic functions will be added following the list established by extracting atomic functions from the Quantum Protocol Zoo.
